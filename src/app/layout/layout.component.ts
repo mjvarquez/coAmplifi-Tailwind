@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { combineLatest, filter, map, Subject, takeUntil } from 'rxjs';
+import { combineLatest, filter, map, Subject, takeUntil, tap } from 'rxjs';
 import { FuseConfigService } from '@fuse/services/config';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { FusePlatformService } from '@fuse/services/platform';
@@ -70,7 +70,6 @@ export class LayoutComponent implements OnInit, OnDestroy
                 return options;
             })
         ).subscribe((options) => {
-
             // Store the options
             this.scheme = options.scheme;
             this.theme = options.theme;
@@ -84,7 +83,6 @@ export class LayoutComponent implements OnInit, OnDestroy
         this._fuseConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config: AppConfig) => {
-
                 // Store the config
                 this.config = config;
 
@@ -141,6 +139,7 @@ export class LayoutComponent implements OnInit, OnDestroy
         // 2. Get the query parameter from the current route and
         // set the layout and save the layout to the config
         const layoutFromQueryParam = (route.snapshot.queryParamMap.get('layout') as Layout);
+        
         if ( layoutFromQueryParam )
         {
             this.layout = layoutFromQueryParam;

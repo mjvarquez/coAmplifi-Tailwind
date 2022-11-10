@@ -51,6 +51,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        console.log('material');
         // Subscribe to navigation data
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))

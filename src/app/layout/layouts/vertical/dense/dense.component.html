@@ -1,66 +1,78 @@
 <!-- Loading bar -->
 <fuse-loading-bar></fuse-loading-bar>
 
-<!-- Navigation -->
+<!-- Main Navigation -->
 <fuse-vertical-navigation
-    class="dark bg-gray-900 print:hidden"
+    class="bg-card z-10 mt-12 dark:bg-gray-900 print:hidden"
     [appearance]="navigationAppearance"
     [mode]="isScreenSmall ? 'over' : 'side'"
     [name]="'mainNavigation'"
     [navigation]="navigation.default"
     [opened]="!isScreenSmall">
-    <!-- Navigation header hook -->
     <ng-container fuseVerticalNavigationContentHeader>
-        <!-- Logo -->
+        <div class="mt-2"></div>
+    </ng-container>
+</fuse-vertical-navigation>
+
+<!-- Sub Navigation -->
+<fuse-vertical-navigation
+    class="bg-card z-10 mt-12 dark:bg-gray-900 print:hidden"
+    [appearance]="navigationAppearance"
+    [mode]="isScreenSmall ? 'over' : 'side'"
+    [name]="'subNavigation'"
+    [navigation]="navigation.default"
+    [opened]="!isScreenSmall">
+    <ng-container fuseVerticalNavigationContentHeader>
+        <div class="mt-2"></div>
+    </ng-container>
+</fuse-vertical-navigation>
+
+<!-- Header -->
+<div class="fixed z-20 flex flex-0 items-center w-full h-12 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+    <div class="flex items-center pr-2 space-x-2">
+        <!-- Navigation toggle button -->
+        <button
+            mat-icon-button
+            (click)="toggleNavigation('subNavigation')">
+            <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+        </button>
         <div class="flex items-center justify-center h-20">
             <img
                 class="w-8"
-                src="assets/images/logo/logo.svg"
+                src="assets/images/logo/ceosi_logo.jpeg"
                 alt="Logo image">
         </div>
-    </ng-container>
-</fuse-vertical-navigation>
+        <!-- Navigation appearance toggle button -->
+        <!-- <button
+            class="hidden md:inline-flex"
+            mat-icon-button
+            (click)="toggleNavigationAppearance()">
+            <mat-icon [svgIcon]="'heroicons_outline:switch-horizontal'"></mat-icon>
+        </button> -->
+    </div>
+    <!-- Components -->
+    <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
+        <!-- <languages></languages> -->
+        <!-- <fuse-fullscreen class="hidden md:block"></fuse-fullscreen> -->
+        <!-- <search [appearance]="'bar'"></search> -->
+        <!-- <shortcuts></shortcuts> -->
+        <!-- <messages></messages> -->
+        <!-- <notifications></notifications> -->
+        <!-- <button
+            class="lg:hidden"
+            mat-icon-button
+            (click)="quickChat.toggle()">
+            <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
+        </button> -->
+        <user></user>
+    </div>
+</div>
 
 <!-- Wrapper -->
 <div class="flex flex-col flex-auto w-full min-w-0">
 
-    <!-- Header -->
-    <div class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
-        <div class="flex items-center pr-2 space-x-2">
-            <!-- Navigation toggle button -->
-            <button
-                mat-icon-button
-                (click)="toggleNavigation('mainNavigation')">
-                <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
-            </button>
-            <!-- Navigation appearance toggle button -->
-            <button
-                class="hidden md:inline-flex"
-                mat-icon-button
-                (click)="toggleNavigationAppearance()">
-                <mat-icon [svgIcon]="'heroicons_outline:switch-horizontal'"></mat-icon>
-            </button>
-        </div>
-        <!-- Components -->
-        <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
-            <languages></languages>
-            <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
-            <search [appearance]="'bar'"></search>
-            <shortcuts></shortcuts>
-            <messages></messages>
-            <notifications></notifications>
-            <button
-                class="lg:hidden"
-                mat-icon-button
-                (click)="quickChat.toggle()">
-                <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
-            </button>
-            <user></user>
-        </div>
-    </div>
-
     <!-- Content -->
-    <div class="flex flex-col flex-auto">
+    <div class="flex mt-10 flex-col flex-auto">
         <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
              Otherwise, layout changes won't be registered and the view won't be updated! -->
         <router-outlet *ngIf="true"></router-outlet>
@@ -74,4 +86,4 @@
 </div>
 
 <!-- Quick chat -->
-<quick-chat #quickChat="quickChat"></quick-chat>
+<!-- <quick-chat #quickChat="quickChat"></quick-chat> -->
