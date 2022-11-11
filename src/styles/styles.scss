@@ -2,3 +2,18 @@
 /*  @ Import/write your custom styles here.
 /*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
 /* ----------------------------------------------------------------------------------------------------- */
+.fuse-vertical-navigation-item-active {
+    color:#F97316 !important;
+}
+.fuse-vertical-navigation-item:hover{
+    color:#F97316 !important;
+}
+.auth-container{
+    background:#E5D3A9;
+}
+.auth-left-panel{
+    background:#FCF2E6;
+}
+.text-on-primary{
+    color:#fff !important;
+}

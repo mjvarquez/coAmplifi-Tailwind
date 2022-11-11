@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit, OnDestroy
      * Constructor
      */
     constructor(
+        @Inject(DOCUMENT) private document: Document,
         private _activatedRoute: ActivatedRoute,
         @Inject(DOCUMENT) private _document: any,
         private _renderer2: Renderer2,
@@ -85,7 +86,6 @@ export class LayoutComponent implements OnInit, OnDestroy
             .subscribe((config: AppConfig) => {
                 // Store the config
                 this.config = config;
-
                 // Update the layout
                 this._updateLayout();
             });

@@ -168,7 +168,7 @@
 .mat-raised-button,
 .mat-fab,
 .mat-mini-fab {
-
+    color:#fff !important;
     .mat-icon {
         color: currentColor !important;
     }
@@ -251,7 +251,6 @@
 
     /* On primary colored buttons, use the primary color as focus overlay */
     &.mat-primary:not(.mat-button-disabled) {
-
         .mat-button-focus-overlay {
             @apply bg-primary #{'!important'};
         }
@@ -276,7 +275,7 @@
     &.mat-primary:not(.mat-button-disabled),
     &.mat-accent:not(.mat-button-disabled),
     &.mat-warn:not(.mat-button-disabled) {
-
+        
         &:hover,
         &.cdk-keyboard-focused,
         &.cdk-program-focused {

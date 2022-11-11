@@ -17,11 +17,11 @@
 <!-- Sub Navigation -->
 <fuse-vertical-navigation
     class="bg-card z-10 mt-12 dark:bg-gray-900 print:hidden"
-    [appearance]="navigationAppearance"
-    [mode]="isScreenSmall ? 'over' : 'side'"
+    [appearance]="subNavigationAppearance"
+    [mode]="'over'"
     [name]="'subNavigation'"
-    [navigation]="navigation.default"
-    [opened]="!isScreenSmall">
+    [navigation]="subNavigation.default"
+    [opened]="false">
     <ng-container fuseVerticalNavigationContentHeader>
         <div class="mt-2"></div>
     </ng-container>
@@ -39,9 +39,14 @@
         <div class="flex items-center justify-center h-20">
             <img
                 class="w-8"
-                src="assets/images/logo/ceosi_logo.jpeg"
+                src="assets/images/logo/coamplify_logo.jpeg"
                 alt="Logo image">
         </div>
+        <span class="text-[16px] font-medium" [matMenuTriggerFor]="menu">Enterprise One</span>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item><mat-icon svgIcon="mat_outline:domain"></mat-icon> Kesha Organization</button>
+            <button mat-menu-item><mat-icon svgIcon="mat_outline:domain"></mat-icon> Enterprise One</button>
+        </mat-menu>
         <!-- Navigation appearance toggle button -->
         <!-- <button
             class="hidden md:inline-flex"
@@ -56,8 +61,8 @@
         <!-- <fuse-fullscreen class="hidden md:block"></fuse-fullscreen> -->
         <!-- <search [appearance]="'bar'"></search> -->
         <!-- <shortcuts></shortcuts> -->
-        <!-- <messages></messages> -->
-        <!-- <notifications></notifications> -->
+        <messages></messages>
+        <notifications></notifications>
         <!-- <button
             class="lg:hidden"
             mat-icon-button

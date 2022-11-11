@@ -6,14 +6,14 @@ export const defaultNavigation: FuseNavigationItem[] = [
         id   : 'calendar',
         title: 'Calendar',
         type : 'basic',
-        icon : 'heroicons_outline:calendar',
+        icon : 'mat_outline:calendar_today',
         link : '/example'
     },
     {
         id   : 'clipboard',
         title: 'Clipboard',
         type : 'basic',
-        icon : 'heroicons_outline:clipboard',
+        icon : 'mat_outline:calendar_view_week',
         link : '/clipboard'
     },
     {
@@ -27,14 +27,14 @@ export const defaultNavigation: FuseNavigationItem[] = [
         id   : 'projects',
         title: 'Projects',
         type : 'basic',
-        icon : 'mat_outline:task',
+        icon : 'mat_outline:preview',
         link : '/projects'
     },
     {
         id   : 'projects_beta',
         title: 'Projects (Beta)',
         type : 'basic',
-        icon : 'mat_outline:task',
+        icon : 'mat_outline:preview',
         link : '/projects_beta'
     }
 ];

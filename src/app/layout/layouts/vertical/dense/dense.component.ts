@@ -5,6 +5,7 @@ import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { FuseNavigationService, FuseVerticalNavigationComponent } from '@fuse/components/navigation';
 import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
+import { SubNavigationService } from 'app/core/navigation/sub_navigation.service';
 
 @Component({
     selector     : 'dense-layout',
@@ -15,8 +16,11 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
 {
     isScreenSmall: boolean;
     navigation: Navigation;
+    subNavigation: Navigation;
     navigationAppearance: 'default' | 'dense' = 'dense';
+    subNavigationAppearance: 'default' | 'classy' = 'classy';
     private _unsubscribeAll: Subject<any> = new Subject<any>();
+    private _unsubscribeSubAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -25,6 +29,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _router: Router,
         private _navigationService: NavigationService,
+        private _subNavigationService: SubNavigationService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService
     )
@@ -54,22 +59,28 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
     {
         // Subscribe to navigation data
         this._navigationService.navigation$
-            .pipe(takeUntil(this._unsubscribeAll))
+            .pipe(takeUntil(this._unsubscribeAll)) 
             .subscribe((navigation: Navigation) => {
                 this.navigation = navigation;
-            });
+        });
+        
+        // Subscribe to sub navigation data
+        this._subNavigationService.navigation$
+        .pipe(takeUntil(this._unsubscribeSubAll))
+        .subscribe((navigation: Navigation) => {
+                this.subNavigation = navigation;
+        });
 
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(({matchingAliases}) => {
+        .pipe(takeUntil(this._unsubscribeAll))
+        .subscribe(({matchingAliases}) => {
+            // Check if the screen is small
+            this.isScreenSmall = !matchingAliases.includes('md');
 
-                // Check if the screen is small
-                this.isScreenSmall = !matchingAliases.includes('md');
-
-                // Change the navigation appearance
-                this.navigationAppearance = this.isScreenSmall ? 'default' : 'dense';
-            });
+            // Change the navigation appearance
+            this.navigationAppearance = this.isScreenSmall ? 'default' : 'dense';
+        });
     }
 
     /**
@@ -80,6 +91,8 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
+        this._unsubscribeSubAll.next(null);
+        this._unsubscribeSubAll.complete();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -95,7 +108,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
     {
         // Get the navigation
         const navigation = this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(name);
-
+        
         if ( navigation )
         {
             // Toggle the opened status
