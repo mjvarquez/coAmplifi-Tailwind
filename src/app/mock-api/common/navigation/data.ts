@@ -14,7 +14,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         title: 'Clipboard',
         type : 'basic',
         icon : 'mat_outline:calendar_view_week',
-        link : '/clipboard'
+        link : '/task/myClipboard/kanban'
     },
     {
         id   : 'meetings',
