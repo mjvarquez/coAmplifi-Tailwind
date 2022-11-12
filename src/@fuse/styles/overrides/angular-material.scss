@@ -1316,10 +1316,10 @@
     }
 
     .mat-tab-header {
-        border-bottom: none !important;
+        border-bottom: 1px solid #DCDBDA !important;
 
         .mat-tab-label-container {
-            padding: 0 24px;
+            padding: 0 ;
 
             .mat-tab-list {
 
@@ -1328,17 +1328,17 @@
                     .mat-tab-label {
                         min-width: 0 !important;
                         height: 40px !important;
-                        padding: 0 20px !important;
-                        border-radius: 9999px !important;
                         @apply text-secondary;
 
                         &.mat-tab-label-active {
-                            @apply bg-gray-700 bg-opacity-10 dark:bg-gray-50 dark:bg-opacity-10 #{'!important'};
-                            @apply text-default #{'!important'};
+                            @apply text-orange-500 border-b-2 border-b-orange-500 #{'!important'};
+                            svg {
+                                @apply text-orange-500 #{'!important'};
+                            }
                         }
 
                         + .mat-tab-label {
-                            margin-left: 4px;
+                            // margin-left: 4px;
                         }
 
                         .mat-tab-label-content {
