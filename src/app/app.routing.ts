@@ -76,6 +76,9 @@ export const appRoutes: Route[] = [
         children   : [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
             {path: 'task/myClipboard/kanban', loadChildren: () => import('app/modules/admin/my-office/clipboard/kanban/kanban.module').then(m => m.KanbanModule)},
+            {path: 'task/myClipboard/planner', loadChildren: () => import('app/modules/admin/my-office/clipboard/planner/planner.module').then(m => m.PlannerModule)},
+            {path: 'task/myClipboard/docket', loadChildren: () => import('app/modules/admin/my-office/clipboard/docket/docket.module').then(m => m.DocketModule)},
+            {path: 'task/myClipboard/taskEditor', loadChildren: () => import('app/modules/admin/my-office/clipboard/task-editor/task-editor.module').then(m => m.TaskEditorModule)},
         ]
     }
 ];

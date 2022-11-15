@@ -2,14 +2,50 @@
     <app-breadcrumb></app-breadcrumb>
     <app-sub-menu></app-sub-menu>
     <!-- Main -->
-    <div class="flex-auto p-6 sm:p-10">
-
-        <!-- CONTENT GOES HERE -->
-        <div class="h-400 min-h-400 max-h-400 border-gray-300 rounded-2xl">
+    <div class="flex-auto relative">
+        <mat-sidenav-container [hasBackdrop]="false" >
+            <mat-sidenav class="w-90 min-h-90 h-full border-r-2 z-20 border-opacity-10 border-black border-solid shadow-none" mode="push" [opened]="sideNav">
+                <mat-toolbar class="bg-gray-100">
+                    <mat-toolbar-row class="flex-row">
+                        <div class="basis-11/12">
+                            <button mat-flat-button
+                            class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
+                            >
+                            Favorite Tasks
+                            </button>
+                            <button mat-flat-button
+                                class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
+                                >
+                                All Tasks
+                            </button>
+                        </div>
+                        <button mat-mini-fab
+                            class="bg-transparent shadow-none text-orange-500"
+                            (click)="showTaskList()"
+                            >
+                            <mat-icon svgIcon="mat_outline:close"></mat-icon>
+                        </button>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
+                <app-tasklist></app-tasklist>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <div class="h-400 min-h-400 max-h-400 border-gray-300 rounded-2xl">
             
-            kanban
-        </div>
-
+                    <button mat-flat-button 
+                    class="bg-transparent mt-3 text-orange-500"
+                    (click)="showTaskList()"
+                    >
+                        <mat-icon svgIcon="mat_outline:menu_open"></mat-icon>
+                        Task List
+                    </button>
+                    <button mat-flat-button class="bg-transparent text-orange-500" aria-label="Example icon button with a vertical three dot icon">
+                        <mat-icon svgIcon="mat_outline:refresh"></mat-icon>
+                        Refresh
+                    </button>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        
     </div>
-
 </div>
