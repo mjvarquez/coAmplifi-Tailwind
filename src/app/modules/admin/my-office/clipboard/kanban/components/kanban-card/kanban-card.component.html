@@ -1,0 +1,59 @@
+<!-- Card #23 -->
+<fuse-card 
+#expandableCard02="fuseCard"
+class="flex flex-col max-w-80 w-full pt-3 filter-list">
+    <div class="flex text-md px-5">
+        <button
+        mat-icon-button
+        class="align-middle"
+        [matMenuTriggerFor]="listCard01Menu">
+            <mat-icon class="w-10 text-blue-500" svgIcon="mat_outline:menu">
+            </mat-icon> 
+        </button>
+        <mat-menu #listCard01Menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon  
+                svgIcon="mat_outline:edit">
+                </mat-icon>
+                Edit
+            </button>
+        </mat-menu>
+        <span class="mt-3">09:49 AM</span>
+    </div>
+    <div class="flex mt-2 px-6">
+        <div>
+            <div class="rounded-full bg-teal-100 w-9 h-9 text-center">
+                <mat-icon class="mt-1 text-teal-500" svgIcon="mat_outline:work_outline"></mat-icon>
+            </div>
+        </div>
+        <div class="ml-2">
+            <div class="font-bold">Coffee Break</div>
+            <div class="text-sm">take a coffee break</div>
+        </div>
+    </div>
+    <div class="mt-2 mb-2 px-6">
+        <mat-icon class="tasklist-item-menu-icon" svgIcon="mat_outline:access_time">
+        </mat-icon> 
+        <span >09:49 AM</span>
+    </div>
+    <div class="flex border-t justify-between mt-2 mb-0 px-6">
+        <span class="mt-2">Recurring Task</span>
+        <button
+            mat-button
+            class="mb-0 min-w-0 m-0 p-0 hover:bg-transparent focus:bg-transparent"
+            [ngClass]="{'rotate-180': expandableCard02.expanded}"
+            (click)="expandableCard02.expanded = !expandableCard02.expanded">
+            <mat-icon
+                class="icon-size-5 text-blue-500 transition-transform ease-in-out duration-150 rotate-0"
+                [svgIcon]="'heroicons_solid:chevron-down'">
+            </mat-icon>
+        </button>
+    </div>
+
+    <ng-container 
+    fuseCardExpansion>
+       <div class="bg-gray-200 text-center rounded-lg mb-3 mx-3 p-5">
+            <span>Attribute Task To Project:</span>
+       </div>
+    </ng-container>
+</fuse-card>

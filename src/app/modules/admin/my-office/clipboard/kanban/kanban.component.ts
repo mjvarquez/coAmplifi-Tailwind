@@ -21,9 +21,9 @@ export class KanbanComponent implements OnInit {
   ngAfterViewInit(): void
 {
     // Iterate through the directives and update all of them
-    this._fuseScrollbarDirectives.forEach((fuseScrollbarDirective) => {
-        fuseScrollbarDirective.update();
-    });
+    // this._fuseScrollbarDirectives.forEach((fuseScrollbarDirective) => {
+    //     fuseScrollbarDirective.update();
+    // });
 }
 
 }

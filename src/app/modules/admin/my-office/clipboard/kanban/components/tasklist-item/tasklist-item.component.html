@@ -1,1 +1,55 @@
-<p>tasklist-item works!</p>
+<!-- Card #23 -->
+<fuse-card class="flex flex-col max-w-80 w-full px-8 pt-6 pb-4 filter-list">
+    <div class="flex items-center justify-between">
+        <div class="text-sm leading-tight">
+            <mat-icon class="tasklist-item-menu-icon" svgIcon="mat_outline:access_time">
+            </mat-icon> 
+            30 (Minutes)
+        </div>
+        <div class="-mr-3">
+            <button
+                mat-icon-button
+                class="text-2xl"
+                [matMenuTriggerFor]="listCard01Menu">
+                ☕
+            </button>
+            <mat-menu #listCard01Menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon  
+                    svgIcon="mat_outline:directions_run">
+                    </mat-icon>
+                    Start Task now
+                </button>
+                <button mat-menu-item>
+                    <mat-icon  
+                    svgIcon="mat_outline:add_task">
+                    </mat-icon>
+                    Add to planner
+                </button>
+                <button mat-menu-item>
+                    <mat-icon  
+                    svgIcon="mat_outline:wrap_text">
+                    </mat-icon>
+                    Remove from favorites
+                </button>
+                <button mat-menu-item>
+                    <mat-icon  
+                    svgIcon="mat_outline:remove_circle_outline">
+                    </mat-icon>
+                    Remove from insta list
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="flex">
+        <div>
+            <div class="rounded-full bg-teal-100 w-8 h-8 text-center">
+                <mat-icon class="mt-1 text-teal-500" svgIcon="mat_outline:work_outline"></mat-icon>
+            </div>
+        </div>
+        <div class="ml-2">
+            <div class="font-bold">Coffee Break</div>
+            <div class="text-sm">take a coffee break</div>
+        </div>
+    </div>
+</fuse-card>

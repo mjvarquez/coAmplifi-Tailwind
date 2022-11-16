@@ -1,11 +1,11 @@
-<div class="flex mx-3 my-5 flex-col flex-auto min-w-0">
+<div class="flex shadow-none mx-3 my-5 flex-col flex-auto min-w-0">
     <app-breadcrumb></app-breadcrumb>
     <app-sub-menu></app-sub-menu>
     <!-- Main -->
     <div class="flex-auto relative">
         <mat-sidenav-container [hasBackdrop]="false" >
             <mat-sidenav class="w-90 min-h-90 h-full border-r-2 z-20 border-opacity-10 border-black border-solid shadow-none" mode="push" [opened]="sideNav">
-                <mat-toolbar class="bg-gray-100">
+                <mat-toolbar class="bg-gray-200">
                     <mat-toolbar-row class="flex-row">
                         <div class="basis-11/12">
                             <button mat-flat-button
@@ -33,7 +33,7 @@
                 <div class="h-400 min-h-400 max-h-400 border-gray-300 rounded-2xl">
             
                     <button mat-flat-button 
-                    class="bg-transparent mt-3 text-orange-500"
+                    class="bg-transparent ml-4 mt-3 text-orange-500"
                     (click)="showTaskList()"
                     >
                         <mat-icon svgIcon="mat_outline:menu_open"></mat-icon>
@@ -43,9 +43,20 @@
                         <mat-icon svgIcon="mat_outline:refresh"></mat-icon>
                         Refresh
                     </button>
+                    <div class="grid grid-cols-3 gap-4 ml-5">
+                        <div>
+                            <!-- <app-kanban-empty-card errorTitle="Todo list empty"></app-kanban-empty-card> -->
+                            <app-kanban-card></app-kanban-card>
+                        </div>
+                        <div>
+                            <app-kanban-empty-card errorTitle="Doing list empty"></app-kanban-empty-card>
+                        </div>
+                        <div>
+                            <app-kanban-empty-card errorTitle="Done list empty"></app-kanban-empty-card>
+                        </div>
+                    </div>
                 </div>
             </mat-sidenav-content>
         </mat-sidenav-container>
-        
     </div>
 </div>
