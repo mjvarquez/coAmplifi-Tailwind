@@ -27,7 +27,7 @@
                         </button>
                     </mat-toolbar-row>
                   </mat-toolbar>
-                <app-tasklist></app-tasklist>
+                <app-clipboard-tasklist></app-clipboard-tasklist>
             </mat-sidenav>
             <mat-sidenav-content>
                 <div class="h-400 min-h-400 max-h-400 border-gray-300 rounded-2xl">
@@ -43,16 +43,18 @@
                         <mat-icon svgIcon="mat_outline:refresh"></mat-icon>
                         Refresh
                     </button>
-                    <div class="grid grid-cols-3 gap-4 ml-5">
+                    <div class="grid grid-cols-3 gap-4 ml-5 mt-4">
                         <div>
                             <!-- <app-kanban-empty-card errorTitle="Todo list empty"></app-kanban-empty-card> -->
-                            <app-kanban-card></app-kanban-card>
+                            <app-clipboard-card></app-clipboard-card>
                         </div>
                         <div>
-                            <app-kanban-empty-card errorTitle="Doing list empty"></app-kanban-empty-card>
+                            <app-clipboard-card></app-clipboard-card>
+                            <!-- <app-clipboard-empty-card errorTitle="Doing list empty"></app-clipboard-empty-card> -->
                         </div>
                         <div>
-                            <app-kanban-empty-card errorTitle="Done list empty"></app-kanban-empty-card>
+                            <app-clipboard-card></app-clipboard-card>
+                            <!-- <app-clipboard-empty-card errorTitle="Done list empty"></app-clipboard-empty-card> -->
                         </div>
                     </div>
                 </div>

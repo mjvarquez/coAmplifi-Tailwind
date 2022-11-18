@@ -40,6 +40,6 @@ import { FuseScrollbarModule } from '@fuse/directives/scrollbar';
         FuseScrollbarModule
     ]
 })
-export class ClipboardSharedModule
+export class MyOfficeSharedModule
 {
 }

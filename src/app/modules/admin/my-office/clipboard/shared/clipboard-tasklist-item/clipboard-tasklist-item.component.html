@@ -1,5 +1,5 @@
 <!-- Card #23 -->
-<fuse-card class="flex flex-col max-w-80 w-full px-8 pt-6 pb-4 filter-list">
+<fuse-card class="flex flex-col w-full px-8 pt-6 pb-4 filter-list">
     <div class="flex items-center justify-between">
         <div class="text-sm leading-tight">
             <mat-icon class="tasklist-item-menu-icon" svgIcon="mat_outline:access_time">
@@ -8,10 +8,10 @@
         </div>
         <div class="-mr-3">
             <button
-                mat-icon-button
-                class="text-2xl"
+                mat-flat-button
+                class="text-sm bg-green-600"
                 [matMenuTriggerFor]="listCard01Menu">
-                ☕
+                Start
             </button>
             <mat-menu #listCard01Menu="matMenu">
                 <button mat-menu-item>
@@ -51,5 +51,8 @@
             <div class="font-bold">Coffee Break</div>
             <div class="text-sm">take a coffee break</div>
         </div>
+    </div>
+    <div class="mt-2 mb-2">
+        <mat-icon *ngIf="favorite" class="text-blue-500" svgIcon="mat_outline:favorite"></mat-icon>
     </div>
 </fuse-card>
