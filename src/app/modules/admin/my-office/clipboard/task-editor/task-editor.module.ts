@@ -4,7 +4,9 @@ import { TaskEditorComponent } from './task-editor.component';
 import { BreadcrumbComponent } from '../../shared/breadcrumb/breadcrumb.component';
 import {  ClipboardSharedModule } from '../shared/shared.module';
 import { MyOfficeSharedModule } from '../../shared/shared.module';
-
+import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
+import { SharedModule } from 'app/shared/shared.module';
 const TaskEditorRoutes: Route[] = [
     {
         path     : '',
@@ -21,6 +23,9 @@ const TaskEditorRoutes: Route[] = [
     imports     : [
         ClipboardSharedModule,
         MyOfficeSharedModule,
+        SharedModule,
+        CdkTableModule,
+        MatTableModule,
         RouterModule.forChild(TaskEditorRoutes)
     ]
 })
