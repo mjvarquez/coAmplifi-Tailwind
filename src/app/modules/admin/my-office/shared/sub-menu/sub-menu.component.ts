@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sub-menu',
@@ -9,28 +9,44 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class SubMenuComponent implements OnInit {
-  links = [
-    {label: 'My Clipboard', icon: 'mat_outline:calendar_view_week',  
-    url: '/task/myClipboard/kanban'},
-    {label: 'My Planner', icon: 'mat_outline:task',
-    url: '/task/myClipboard/planner'},
-    {label: 'Queue(0)', icon: 'mat_outline:upcoming'
-    ,url: '/task/myClipboard/docket'},
-    {label: 'Timeclock Editor', icon: 'mat_outline:edit_calendar'
-    ,url: '/task/myClipboard/taskEditor'},
-  ];
-  activeLink = '';
-  background: ThemePalette = undefined;
+  title = '';
+  sub_menu:string[] = [];
+  activeTab = '';
 
-  constructor(private router:Router) { }
+  @Input() background: string = '';
+
+  @Input() linkTab: boolean = false;
+  
+  @Output() changeTab = new EventEmitter<any>();
+  constructor(private router:Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activeLink = this.router.url;
+    this.route.data.subscribe((data) => {
+      this.sub_menu = data['sub_menu'];
+    });
+   
+    switch(this.linkTab){
+      case true:
+        this.activeTab = this.router.url;
+        break;
+      case false:
+        this.route.data.subscribe((data) => {
+          this.activeTab = data['sub_menu'][0].label;
+        })
+        break;
+    }
   }
 
-  clickMenuChangeActive(link){
-    this.activeLink = link.url;
-    this.router.navigate([link.url]);
+  clickMenuChangeActive(tab){
+    switch(this.linkTab){
+      case true:
+        this.activeTab = tab.url;
+        this.router.navigate([tab.url]);
+      case false:
+        this.changeTab.emit(tab);
+        this.activeTab = tab.label;
+    }
   }
 
 }
+

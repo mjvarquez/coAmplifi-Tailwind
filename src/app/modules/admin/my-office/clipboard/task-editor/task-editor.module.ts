@@ -12,7 +12,30 @@ const TaskEditorRoutes: Route[] = [
         path     : '',
         title: 'Timeclock Editor',
         component: TaskEditorComponent,
-        
+        data: {
+            sub_menu: [
+                {
+                    label: 'My Clipboard', 
+                    icon: 'mat_outline:calendar_view_week',  
+                    url: '/task/myClipboard/kanban'
+                },
+                {
+                    label: 'My Planner', 
+                    icon: 'mat_outline:task',
+                    url: '/task/myClipboard/planner'
+                },
+                {
+                    label: 'Queue(0)', 
+                    icon: 'mat_outline:upcoming',
+                    url: '/task/myClipboard/docket'
+                },
+                {
+                    label: 'Timeclock Editor',
+                    icon: 'mat_outline:edit_calendar',
+                    url: '/task/myClipboard/taskEditor'
+                },
+            ]
+        },
     }
 ];
 

@@ -79,6 +79,7 @@ export const appRoutes: Route[] = [
             {path: 'task/myClipboard/planner', loadChildren: () => import('app/modules/admin/my-office/clipboard/planner/planner.module').then(m => m.PlannerModule)},
             {path: 'task/myClipboard/docket', loadChildren: () => import('app/modules/admin/my-office/clipboard/docket/docket.module').then(m => m.DocketModule)},
             {path: 'task/myClipboard/taskEditor', loadChildren: () => import('app/modules/admin/my-office/clipboard/task-editor/task-editor.module').then(m => m.TaskEditorModule)},
+            {path: 'task/myTaskPlanner', loadChildren: () => import('app/modules/admin/my-office/calendar/calendar.module').then(m => m.CalendarModule)},
         ]
     }
 ];

@@ -7,7 +7,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         title: 'Calendar',
         type : 'basic',
         icon : 'mat_outline:calendar_today',
-        link : '/example'
+        link : '/task/myTaskPlanner'
     },
     {
         id   : 'clipboard',

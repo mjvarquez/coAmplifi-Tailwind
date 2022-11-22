@@ -18,7 +18,7 @@ import {CdkTableModule} from '@angular/cdk/table';
         ReactiveFormsModule,
         MatTableModule,
         CdkTableModule,
-        TableComponent
+        TableComponent,
     ],
     declarations: [
       TableComponent

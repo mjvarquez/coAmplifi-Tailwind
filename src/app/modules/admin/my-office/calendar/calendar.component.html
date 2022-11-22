@@ -1,0 +1,22 @@
+<div class="flex shadow-none mx-3 my-5 flex-col flex-auto min-w-0">
+    <app-breadcrumb></app-breadcrumb>
+    <app-sub-menu class="mt-3" background="bg-white" (changeTab)="changeTab($event)"></app-sub-menu>
+
+    
+    <!-- Scheduler -->
+    <div *ngIf="schedulerContainer">
+        <mwl-calendar-day-view
+            [viewDate]="viewDate"
+            [events]="events"
+            [dayStartHour]='dayCalendarStartHour'
+            [dayEndHour]='dayCalendarEndHour'
+            [snapDraggedEvents]="false"
+            >
+        </mwl-calendar-day-view>
+    </div>
+
+    <!-- Timetable -->
+    <div *ngIf="timetableContainer">
+        timeTable
+    </div>
+</div>

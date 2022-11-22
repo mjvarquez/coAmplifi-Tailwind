@@ -1466,6 +1466,11 @@ textarea.mat-input-element {
     }
 }
 
+.mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    @apply bg-orange-500 #{'!important'};
+    
+}
+
 //custom classes
 .timecard-periodType:before{
     content: "";
