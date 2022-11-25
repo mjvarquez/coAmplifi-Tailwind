@@ -28,6 +28,7 @@ import {
   CalendarEventTitleFormatter,
   CalendarView
 } from 'angular-calendar';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
@@ -39,13 +40,31 @@ export class CalendarComponent implements OnInit {
   schedulerContainer: boolean = true;
   timetableContainer: boolean = false;
   viewDate: Date = new Date();
+  view = 'week';
   events: any[];
+  toggleTask = 'Toggle Task Selection';
   dayCalendarStartHour: number = 8;
   dayCalendarEndHour: number = 18;
+  refresh: Subject<any> = new Subject();
+  hourSegment: number = 6;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
+    console.log(this.viewDate);
+    this.events = [
+      {
+        id: 'asd123easdfasd',
+        start: new Date(),
+        end: new Date(),
+        title: 'test meeting',
+        color: {
+          primary: '#0084ff',
+          secondary: '#e5fae5'
+        },
+        
+      }
+    ]
   }
 
   changeTab(event){
@@ -59,6 +78,26 @@ export class CalendarComponent implements OnInit {
         this.timetableContainer = false;
         break;
     }
+  }
+
+  clickHourSegment(value){
+    console.log(value);
+  }
+
+  clickMenu(){
+
+  }
+
+  setView(value: string){
+    this.view = value;
+  }
+
+  fetchEvents(){
+    
+  }
+
+  clickSetting(){
+
   }
 
 }

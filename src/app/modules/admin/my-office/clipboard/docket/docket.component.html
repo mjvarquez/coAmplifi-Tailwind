@@ -47,10 +47,10 @@
                         </div>
                         <div class="mt-4">
                             <mat-chip-list multiple>
-                                <mat-chip (click)="toggleSelectAll()" [selected]="selectAll">All</mat-chip>
-                                <mat-chip (click)="toggleSelectAssigned()" [selected]="selectAssigned">Assigned (0)</mat-chip>
-                                <mat-chip (click)="toggleSelectFavorite()" [selected]="selectFavorite">Favorite (0)</mat-chip>
-                                <mat-chip (click)="toggleSelectOneTime()" [selected]="selectOneTime">Onetime (0)</mat-chip>
+                                <mat-chip (click)="toggleSelect('All')" [selected]="selectAll">All</mat-chip>
+                                <mat-chip (click)="toggleSelect('Assigned')" [selected]="selectAssigned">Assigned (0)</mat-chip>
+                                <mat-chip (click)="toggleSelect('Favorite')" [selected]="selectFavorite">Favorite (0)</mat-chip>
+                                <mat-chip (click)="toggleSelect('Onetime')" [selected]="selectOneTime">Onetime (0)</mat-chip>
                             </mat-chip-list>
                         </div>
                     </div>

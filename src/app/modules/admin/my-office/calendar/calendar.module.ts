@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { CalendarComponent } from './calendar.component';
 import { MyOfficeSharedModule } from '../shared/shared.module';
+import { FuseAlertModule } from '@fuse/components/alert';
 // import { CalendarModule, DateAdapter } from 'angular-calendar';
 // import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -34,6 +35,7 @@ const CalendarRoutes: Route[] = [
   ],
   imports: [
     CommonModule,
+    FuseAlertModule,
     MyOfficeSharedModule,
     RouterModule.forChild(CalendarRoutes),
     

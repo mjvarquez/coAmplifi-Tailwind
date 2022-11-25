@@ -2,19 +2,109 @@
     <app-breadcrumb></app-breadcrumb>
     <app-sub-menu class="mt-3" background="bg-white" (changeTab)="changeTab($event)"></app-sub-menu>
 
+    <!-- task tool bar start -->
+    <mat-toolbar class="no-shadow flex justify-between">
+        <div>
+          <span class="h3 font-medium">{{ viewDate | calendarDate:(view +
+            'ViewTitle'):'en' }}</span>
+          <button mat-button (click)="clickMenu()" class="sidebar-toggle m-r-10" value="sidebarclosed"
+             color="primary">
+             <mat-icon svgIcon="mat_outline:add_task"></mat-icon>
+            <ng-container>Add Task</ng-container>
+          </button>
+        </div>
+        <div class="flex">
+            <div>
+                <button mat-button (click)="setView('week')" [color]="view==='week'?'primary':''" >Week</button>
+                <button mat-button (click)="setView('day')" [color]="view==='day'?'primary':''" >Day</button>
+            </div>
     
+            <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="fetchEvents()" (viewChange)="fetchEvents()">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="fetchEvents()"
+            (viewChange)="fetchEvents()">
+                <mat-icon matTooltipClass="customized-tooltip">today</mat-icon>
+            </button>
+            <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="fetchEvents()"
+            (viewChange)="fetchEvents()">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+    
+            <button mat-icon-button (click)="clickSetting()" class="sidebar-toggle m-r-10" value="sidebarclosed">
+                <mat-icon svgIcon="mat_outline:settings"></mat-icon>
+            </button>
+        </div>
+      </mat-toolbar>
+      <!-- task tool bar end -->
+
+    <ng-template
+     #hourSegmentView
+     let-segment="segment"
+     let-locale="locale"
+     let-segmentHeight="segmentHeight"
+     let-isTimeLabel="isTimeLabel"
+     let-daysInWeek="daysInWeek"
+   >
+     <div
+       [attr.aria-hidden]="
+         {}
+           | calendarA11y
+             : (daysInWeek === 1
+                 ? 'hideDayHourSegment'
+                 : 'hideWeekHourSegment')
+       "
+       class="cal-hour-segment"
+       [style.height.px]="segmentHeight"
+       [class.cal-hour-start]="segment.isStart"
+       [class.cal-after-hour-start]="!segment.isStart"
+       [ngClass]="segment.cssClass"
+       (dblclick)="clickHourSegment()"
+     >
+       <div class="cal-time" *ngIf="isTimeLabel">
+         {{
+           segment.displayDate
+             | calendarDate
+               : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
+               : locale
+         }}
+       </div>
+     </div>
+   </ng-template>
+    
+    <ng-template #customCellTemplate let-weekEvent="weekEvent" let-tooltipPlacement="tooltipPlacement"
+      let-eventClicked="eventClicked" let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody" let-tooltipDisabled="tooltipDisabled"
+      let-tooltipDelay="tooltipDelay" let-column="column" let-daysInWeek="daysInWeek">
+
+        <fuse-alert
+            [type]="'primary'"
+            [appearance]="'border'"
+            [showIcon]="false"
+            class="h-auto"
+            >
+            <span class="block">{{weekEvent.event.title}}</span>
+            <span class="italic opacity-50 block">sample description</span>
+            <span class="font-light">2h 19m</span>
+        </fuse-alert>
+    </ng-template>
+
     <!-- Scheduler -->
-    <div *ngIf="schedulerContainer">
-        <mwl-calendar-day-view
+    <div *ngIf="schedulerContainer" class="overflow-auto h-200">
+        <mwl-calendar-week-view
             [viewDate]="viewDate"
             [events]="events"
+            [eventTemplate]="customCellTemplate"
             [dayStartHour]='dayCalendarStartHour'
             [dayEndHour]='dayCalendarEndHour'
             [snapDraggedEvents]="false"
+            [refresh]="refresh"
+            [hourSegments]="hourSegment"
+            [hourSegmentTemplate]="hourSegmentView"
             >
-        </mwl-calendar-day-view>
+        </mwl-calendar-week-view>
     </div>
-
     <!-- Timetable -->
     <div *ngIf="timetableContainer">
         timeTable
