@@ -12,6 +12,13 @@ import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -26,7 +33,7 @@ const routerConfig: ExtraOptions = {
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes, routerConfig),
-
+        PerfectScrollbarModule,
         // Fuse, FuseConfig & FuseMockAPI
         FuseModule,
         FuseConfigModule.forRoot(appConfig),
@@ -44,6 +51,12 @@ const routerConfig: ExtraOptions = {
     ],
     bootstrap   : [
         AppComponent
+    ],
+    providers: [
+        {
+          provide: PERFECT_SCROLLBAR_CONFIG,
+          useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+        }
     ]
 })
 export class AppModule

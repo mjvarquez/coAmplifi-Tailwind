@@ -21,6 +21,8 @@ import {
   formatISO,
 } from 'date-fns';
 
+import { Options } from '@angular-slider/ngx-slider';
+
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -36,17 +38,51 @@ import { Subject } from 'rxjs';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+  dayCalendarStartHour: number = 8;
+  dayCalendarEndHour: number = 18;
+  dayCalendarOptions: Options = {
+    showTicksValues: true,
+    stepsArray: [
+      { value: 0, legend: "12am" },
+      { value: 2, legend: "" },
+      { value: 4, legend: "4am" },
+      { value: 6, legend: "" },
+      { value: 8, legend: "8am" },
+      { value: 10, legend: "" },
+      { value: 12, legend: "12pm" },
+      { value: 14, legend: "" },
+      { value: 16, legend: "16pm" },
+      { value: 18, legend: "" },
+      { value: 20, legend: "20pm" },
+      { value: 22, legend: "" },
+      { value: 24, legend: "24pm" }
+    ]
+  };
+
+  hourSegment: number = 6;
+  hourSegmentOptions: Options = {
+    showTicksValues: true,
+    stepsArray: [
+      { value: 1, legend: "60(min)" },
+      { value: 2, legend: "30(min)" },
+      { value: 4, legend: "15(min)" },
+      { value: 6, legend: "10(min)" },
+      { value: 12, legend: "5(min)" },
+      { value: 20, legend: "3(min)" },
+      { value: 30, legend: "2(min)" },
+      { value: 60, legend: "1(min)" }
+    ]
+  };
 
   schedulerContainer: boolean = true;
+  showInactiveTime: boolean = false;
+  showSetting:boolean = false;
   timetableContainer: boolean = false;
   viewDate: Date = new Date();
   view = 'week';
   events: any[];
   toggleTask = 'Toggle Task Selection';
-  dayCalendarStartHour: number = 8;
-  dayCalendarEndHour: number = 18;
   refresh: Subject<any> = new Subject();
-  hourSegment: number = 6;
 
   constructor() { }
 
@@ -97,7 +133,7 @@ export class CalendarComponent implements OnInit {
   }
 
   clickSetting(){
-
+    this.showSetting = !this.showSetting;
   }
 
 }

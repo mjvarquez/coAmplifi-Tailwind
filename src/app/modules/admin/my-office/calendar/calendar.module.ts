@@ -4,6 +4,8 @@ import { Route, RouterModule } from '@angular/router';
 import { CalendarComponent } from './calendar.component';
 import { MyOfficeSharedModule } from '../shared/shared.module';
 import { FuseAlertModule } from '@fuse/components/alert';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { FuseCardModule } from '@fuse/components/card';
 // import { CalendarModule, DateAdapter } from 'angular-calendar';
 // import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -37,6 +39,8 @@ const CalendarRoutes: Route[] = [
     CommonModule,
     FuseAlertModule,
     MyOfficeSharedModule,
+    NgxSliderModule,
+    FuseCardModule,
     RouterModule.forChild(CalendarRoutes),
     
   ]
