@@ -35,9 +35,26 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  styles: [
+    `
+      .drag-active {
+        position: relative;
+        z-index: 999 !important;
+        pointer-events: none;
+        top:60px !important;
+        left:25px !important;
+      }
+      .drag-over {
+        background-color: #eee !important;
+      }
+    `,
+  ],
 })
 export class CalendarComponent implements OnInit {
+  drawerMode: 'over' | 'side' = 'side';
+  drawerOpened: boolean = false;
+  panelOpenState = false;
   dayCalendarStartHour: number = 8;
   dayCalendarEndHour: number = 18;
   dayCalendarOptions: Options = {
@@ -101,6 +118,10 @@ export class CalendarComponent implements OnInit {
         
       }
     ]
+  }
+
+  onOpenedChange(opened: any): void {
+    this.drawerOpened = opened;
   }
 
   changeTab(event){

@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
+import { KanbanTaskCalendarComponent } from './kanban-task-calendar/kanban-task-calendar.component';
+import { CalendarComponent } from 'app/modules/admin/my-office/calendar/calendar.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -19,9 +21,11 @@ import {CdkTableModule} from '@angular/cdk/table';
         MatTableModule,
         CdkTableModule,
         TableComponent,
+        KanbanTaskCalendarComponent
     ],
     declarations: [
-      TableComponent
+      TableComponent,
+      KanbanTaskCalendarComponent
     ]
 })
 export class SharedModule

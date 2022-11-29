@@ -6,15 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./docket.component.scss']
 })
 export class DocketComponent implements OnInit {
-  sideNav:boolean = false;
+  drawerMode: 'over' | 'side' = 'side';
+  drawerOpened: boolean = false;
   selectAll:boolean = true;
   selectAssigned:boolean = false;
   selectFavorite:boolean = false;
   selectOneTime:boolean = false;
   constructor() { }
 
-  showTaskList(){
-    this.sideNav = !this.sideNav;
+  onOpenedChange(opened: any): void {
+    this.drawerOpened = opened;
   }
 
   toggleSelect(type:string){
@@ -49,6 +50,7 @@ export class DocketComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
 }

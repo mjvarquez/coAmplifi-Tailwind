@@ -1319,6 +1319,11 @@
         }
     }
 }
+.mat-tab-group.mat-tab-no-flex-container {
+    .mat-tab-label-container{
+        display:block !important;
+    }
+}
 .mat-tab-group {
 
     /* No header */

@@ -6,6 +6,9 @@ import { MyOfficeSharedModule } from '../shared/shared.module';
 import { FuseAlertModule } from '@fuse/components/alert';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FuseCardModule } from '@fuse/components/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SharedModule } from 'app/shared/shared.module';
+import {MatListModule} from '@angular/material/list';
 // import { CalendarModule, DateAdapter } from 'angular-calendar';
 // import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -40,6 +43,9 @@ const CalendarRoutes: Route[] = [
     FuseAlertModule,
     MyOfficeSharedModule,
     NgxSliderModule,
+    MatListModule,
+    SharedModule,
+    MatSlideToggleModule,
     FuseCardModule,
     RouterModule.forChild(CalendarRoutes),
     

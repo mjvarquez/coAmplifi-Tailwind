@@ -6,19 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./planner.component.scss']
 })
 export class PlannerComponent implements OnInit {
-  sideNav = false;
   panelOpenState = false;
   doingFolderOpen: boolean = false;
   meetingFolderOpen: boolean = false;
   todoFolderOpen: boolean = false;
   doneFolderOpen: boolean = false;
+  drawerMode: 'over' | 'side' = 'side';
+  drawerOpened: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  showAddTask(){
-    this.sideNav = !this.sideNav;
+  onOpenedChange(opened: any): void {
+    this.drawerOpened = opened;
   }
 
 }

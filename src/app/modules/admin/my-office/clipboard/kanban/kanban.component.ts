@@ -7,23 +7,16 @@ import { FuseScrollbarDirective } from '@fuse/directives/scrollbar/scrollbar.dir
   templateUrl: './kanban.component.html'
 })
 export class KanbanComponent implements OnInit {
-  sideNav:boolean = false;
+  drawerMode: 'over' | 'side' = 'side';
+  drawerOpened: boolean = false;
   constructor() { }
   private _fuseScrollbarDirectives: QueryList<FuseScrollbarDirective>
-  
-  showTaskList(){
-    this.sideNav = !this.sideNav;
-  }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void
-{
-    // Iterate through the directives and update all of them
-    // this._fuseScrollbarDirectives.forEach((fuseScrollbarDirective) => {
-    //     fuseScrollbarDirective.update();
-    // });
-}
+  onOpenedChange(opened: any): void {
+    this.drawerOpened = opened;
+  }
 
 }

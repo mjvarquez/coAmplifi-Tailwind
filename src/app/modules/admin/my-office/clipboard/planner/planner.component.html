@@ -2,123 +2,138 @@
     <app-breadcrumb></app-breadcrumb>
     <app-sub-menu [linkTab]="true"></app-sub-menu>
     <!-- Main -->
-    <div class="flex-auto relative">
-        <mat-sidenav-container [hasBackdrop]="false" >
-            <mat-sidenav class="w-90 min-h-90 h-full border-r-2 z-20 border-opacity-10 border-black border-solid shadow-none" mode="push" [opened]="sideNav">
-                <mat-toolbar class="bg-gray-200">
-                    <mat-toolbar-row class="flex-row">
-                        <div class="basis-11/12">
-                            <button mat-flat-button
+    
+
+    <mat-drawer-container class="flex-auto">
+        <!-- Drawer -->
+        <mat-drawer
+            class="w-80 dark:bg-gray-900"
+            [autoFocus]="false"
+            [mode]="drawerMode"
+            [opened]="drawerOpened"
+            (openedChange)="onOpenedChange($event)"
+            #matDrawer>
+            <mat-toolbar class="bg-gray-200">
+                <mat-toolbar-row class="flex-row">
+                    <div class="basis-11/12">
+                        <button mat-flat-button
+                        class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
+                        >
+                        Favorite Tasks
+                        </button>
+                        <button mat-flat-button
                             class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
                             >
-                            Favorite Tasks
-                            </button>
-                            <button mat-flat-button
-                                class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
-                                >
-                                All Tasks
-                            </button>
-                        </div>
-                        <button mat-mini-fab
-                            class="bg-transparent shadow-none text-orange-500"
-                            (click)="showAddTask()"
-                            >
-                            <mat-icon svgIcon="mat_outline:close"></mat-icon>
+                            All Tasks
                         </button>
-                    </mat-toolbar-row>
-                </mat-toolbar>
-                <app-clipboard-tasklist></app-clipboard-tasklist>
-            </mat-sidenav>
-            <mat-sidenav-content>
-                <div class="h-400 min-h-400 max-h-400 border-gray-300 rounded-2xl">
-            
+                    </div>
+                    <button mat-mini-fab
+                        class="bg-transparent shadow-none text-orange-500"
+                        (click)="matDrawer.toggle()"
+                        >
+                        <mat-icon svgIcon="mat_outline:close"></mat-icon>
+                    </button>
+                </mat-toolbar-row>
+              </mat-toolbar>
+            <app-clipboard-tasklist></app-clipboard-tasklist>
+        </mat-drawer>
+
+        <!-- Drawer content -->
+        <mat-drawer-content class="flex flex-col">
+    
+            <!-- Main -->
+            <div class="flex-auto px-8 py-4">
+
+                <!-- CONTENT GOES HERE -->
+                <div class="h-400 min-h-400 max-h-400 rounded-2xl">
                     <button mat-flat-button 
-                    class="bg-transparent ml-4 mt-3 text-orange-500"
-                    (click)="showAddTask()"
+                    class="bg-transparent text-orange-500"
+                    (click)="matDrawer.toggle()"
                     >
-                        <mat-icon svgIcon="mat_outline:menu_open"></mat-icon>
+                        <mat-icon *ngIf="!drawerOpened" svgIcon="mat_outline:menu_open"></mat-icon>
+                        <mat-icon *ngIf="drawerOpened" svgIcon="mat_outline:arrow_back_ios"></mat-icon>
                         Add Task
                     </button>
                     <button mat-flat-button class="bg-transparent text-orange-500" aria-label="Example icon button with a vertical three dot icon">
                         <mat-icon svgIcon="mat_outline:refresh"></mat-icon>
                         Refresh
                     </button>
-                    <div class="mx-5">
-                        <!-- Card #23 -->
-                        <div class="flex flex-col w-full">
-                            <mat-accordion class=" mt-5">
-                                <ng-container>
-                                    <mat-expansion-panel
-                                    (opened)="doingFolderOpen = true"
-                                    (closed)="doingFolderOpen = false"
-                                    >
-                                        <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                                            <mat-panel-title class="font-medium leading-tight">
-                                                <mat-icon class="text-yellow-400" *ngIf="!doingFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
-                                                <mat-icon class="text-yellow-400" *ngIf="doingFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
-                                                <span class="ml-3">DOING (0)</span>
-                                            </mat-panel-title>
-                                        </mat-expansion-panel-header>
-                                        zzzzzzzzzzzzzz
-                                    </mat-expansion-panel>
-                                </ng-container>
-                            </mat-accordion>
-                            <mat-accordion class=" mt-5">
-                                <ng-container>
-                                    <mat-expansion-panel
-                                    (opened)="meetingFolderOpen = true"
-                                    (closed)="meetingFolderOpen = false"
-                                    >
-                                        <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                                            <mat-panel-title class="font-medium leading-tight">
-                                                <mat-icon class="text-red-400" *ngIf="!meetingFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
-                                                <mat-icon class="text-red-400" *ngIf="meetingFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
-                                                <span class="ml-3">MEETING (0)</span>
-                                            </mat-panel-title>
-                                        </mat-expansion-panel-header>
-                                        zzzzzzzzzzzzzz2
-                                    </mat-expansion-panel>
-                                </ng-container>
-                            </mat-accordion>
-                            <mat-accordion class=" mt-5">
-                                <ng-container>
-                                    <mat-expansion-panel
-                                    (opened)="todoFolderOpen = true"
-                                    (closed)="todoFolderOpen = false"
-                                    >
-                                        <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                                            <mat-panel-title class="font-medium leading-tight">
-                                                <mat-icon class="text-blue-400" *ngIf="!todoFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
-                                                <mat-icon class="text-blue-400" *ngIf="todoFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
-                                                <span class="ml-3">TODO (0)</span>
-                                            </mat-panel-title>
-                                        </mat-expansion-panel-header>
-                                        zzzzzzzzzzzzzz2
-                                    </mat-expansion-panel>
-                                </ng-container>
-                            </mat-accordion>
-                            <mat-accordion class=" mt-5">
-                                <ng-container>
-                                    <mat-expansion-panel
-                                    (opened)="doneFolderOpen = true"
-                                    (closed)="doneFolderOpen = false"
-                                    >
-                                        <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                                            <mat-panel-title class="font-medium leading-tight">
-                                                <mat-icon class="text-green-400" *ngIf="!doneFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
-                                                <mat-icon class="text-green-400" *ngIf="doneFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
-                                                <span class="ml-3">DONE (0)</span>
-                                            </mat-panel-title>
-                                        </mat-expansion-panel-header>
-                                        zzzzzzzzzzzzzz2
-                                    </mat-expansion-panel>
-                                </ng-container>
-                            </mat-accordion>
-                        </div>
+                    <!-- Card #23 -->
+                    <div class="flex flex-col w-full">
+                        <mat-accordion class=" mt-5">
+                            <ng-container>
+                                <mat-expansion-panel
+                                (opened)="doingFolderOpen = true"
+                                (closed)="doingFolderOpen = false"
+                                >
+                                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                                        <mat-panel-title class="font-medium leading-tight">
+                                            <mat-icon class="text-yellow-400" *ngIf="!doingFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
+                                            <mat-icon class="text-yellow-400" *ngIf="doingFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
+                                            <span class="ml-3">DOING (0)</span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    zzzzzzzzzzzzzz
+                                </mat-expansion-panel>
+                            </ng-container>
+                        </mat-accordion>
+                        <mat-accordion class=" mt-5">
+                            <ng-container>
+                                <mat-expansion-panel
+                                (opened)="meetingFolderOpen = true"
+                                (closed)="meetingFolderOpen = false"
+                                >
+                                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                                        <mat-panel-title class="font-medium leading-tight">
+                                            <mat-icon class="text-red-400" *ngIf="!meetingFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
+                                            <mat-icon class="text-red-400" *ngIf="meetingFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
+                                            <span class="ml-3">MEETING (0)</span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    zzzzzzzzzzzzzz2
+                                </mat-expansion-panel>
+                            </ng-container>
+                        </mat-accordion>
+                        <mat-accordion class=" mt-5">
+                            <ng-container>
+                                <mat-expansion-panel
+                                (opened)="todoFolderOpen = true"
+                                (closed)="todoFolderOpen = false"
+                                >
+                                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                                        <mat-panel-title class="font-medium leading-tight">
+                                            <mat-icon class="text-blue-400" *ngIf="!todoFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
+                                            <mat-icon class="text-blue-400" *ngIf="todoFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
+                                            <span class="ml-3">TODO (0)</span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    zzzzzzzzzzzzzz2
+                                </mat-expansion-panel>
+                            </ng-container>
+                        </mat-accordion>
+                        <mat-accordion class=" mt-5">
+                            <ng-container>
+                                <mat-expansion-panel
+                                (opened)="doneFolderOpen = true"
+                                (closed)="doneFolderOpen = false"
+                                >
+                                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                                        <mat-panel-title class="font-medium leading-tight">
+                                            <mat-icon class="text-green-400" *ngIf="!doneFolderOpen" svgIcon="mat_outline:folder"></mat-icon>
+                                            <mat-icon class="text-green-400" *ngIf="doneFolderOpen" svgIcon="mat_outline:folder_open"></mat-icon>
+                                            <span class="ml-3">DONE (0)</span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    zzzzzzzzzzzzzz2
+                                </mat-expansion-panel>
+                            </ng-container>
+                        </mat-accordion>
                     </div>
                 </div>
-            </mat-sidenav-content>
-        </mat-sidenav-container>
-    </div>
+
+            </div>
+
+        </mat-drawer-content>
+    </mat-drawer-container>
 
 </div>

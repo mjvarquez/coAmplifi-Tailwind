@@ -12,9 +12,34 @@ export const defaultNavigation: FuseNavigationItem[] = [
     {
         id   : 'clipboard',
         title: 'Clipboard',
-        type : 'basic',
+        type : 'collapsable',
         icon : 'mat_outline:calendar_view_week',
-        link : '/task/myClipboard/kanban'
+        children: [
+            {
+                id   : 'kanban',
+                title: 'My Clipboard',
+                type : 'basic',
+                link: '/task/myClipboard/kanban'
+            },
+            {
+                id   : 'planner',
+                title: 'My Planner',
+                type : 'basic',
+                link: '/task/myClipboard/planner'
+            },
+            {
+                id   : 'docket',
+                title: 'Docket',
+                type : 'basic',
+                link: '/task/myClipboard/docket'
+            },
+            {
+                id   : 'taskEditor',
+                title: 'Timeclock Editor',
+                type : 'basic',
+                link: '/task/myClipboard/taskEditor'
+            }
+        ]
     },
     {
         id   : 'meetings',

@@ -58,13 +58,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'dashboards.project',
                 title: 'Calendar',
                 type : 'basic',
-                link : '/dashboards/project'
+                link : '/task/myTaskPlanner'
             },
             {
                 id   : 'calendar.clipboard',
                 title: 'Clipboard',
                 type : 'basic',
-                link : 'task/myClipboard'
+                link : 'task/myClipboard/kanban'
             },
             {
                 id   : 'dashboards.project',
