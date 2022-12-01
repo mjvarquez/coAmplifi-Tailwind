@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
@@ -39,14 +39,12 @@ import { Subject } from 'rxjs';
   styles: [
     `
       .drag-active {
-        position: relative;
-        z-index: 999 !important;
+        position: absolute !important;
+        z-index: 1;
         pointer-events: none;
-        top:60px !important;
-        left:25px !important;
       }
       .drag-over {
-        background-color: #eee !important;
+        background-color: #eee;
       }
     `,
   ],

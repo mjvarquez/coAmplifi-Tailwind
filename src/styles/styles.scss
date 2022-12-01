@@ -29,3 +29,10 @@ fuse-alert .fuse-alert-container{
 .fuse-vertical-navigation-item-expanded > .fuse-vertical-navigation-item-wrapper{
     color:#F97316 !important;
 }
+.drag-active {
+    position: relative;
+    z-index: 999999 !important;
+    pointer-events: none;
+    top:60px !important;
+    left:25px !important;
+  }
