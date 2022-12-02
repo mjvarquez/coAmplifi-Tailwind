@@ -84,6 +84,7 @@
                             [value]="{plannerKey: 1, task: 'test'}"
                             [dropData]="{event: {id: 'NewEvent', plannerKey: 1, task: 'test'}}"
                             dragActiveClass="drag-active"
+                            dragOverClass="cal-drag-over"
                             [touchStartLongPress]="{ delay: 300, delta: 30 }"
                             checkboxPosition="before"
                             >
@@ -153,7 +154,7 @@
                   </div>
                   <!-- Scheduler -->
                   <div *ngIf="schedulerContainer" class="overflow-auto ">
-                    <div [ngSwitch]="view" class="h-200"> 
+                    <div [ngSwitch]="view" [perfectScrollbar]="config" class="h-200"> 
                       <mwl-calendar-week-view
                           *ngSwitchCase="'week'"
                           [viewDate]="viewDate"
@@ -183,7 +184,7 @@
                     </div>
                   </div>
                   <!-- Timetable -->
-                  <div *ngIf="timetableContainer">
+                  <div *ngIf="timetableContainer" [perfectScrollbar]="config">
                       <app-kanban-task-calendar></app-kanban-task-calendar>
                   </div>
                 </div>

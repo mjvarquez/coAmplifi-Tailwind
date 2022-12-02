@@ -46,7 +46,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         title: 'Meetings',
         type : 'basic',
         icon : 'heroicons_outline:user-group',
-        link : '/meetings'
+        link : '/task/meetingv1',
     },
     {
         id   : 'projects',

@@ -1,1 +1,45 @@
-<p>kanban-task-calendar works!</p>
+<!-- task tool bar start -->
+<mat-toolbar class="no-shadow flex justify-between bg-gray-200">
+    <div>
+        <div class="flex mt-1" style="width: 400px">
+            <div mat-card-avatar>
+                <img
+                src="/assets/images/avatars/helena.jpeg"
+                onerror="src='assets/images/users/default-avatar.jpeg'"
+                alt="user"
+                class="m-l-5 rounded-full"
+                style="width: 40px" />
+            </div>
+            <div class="ml-4">
+                <span class="font-bold leading-3 block text-lg">Helena Kosmatos</span>
+                <small class="text-xs">{{ viewDate | calendarDate: view + 'ViewTitle':'en' }}</small>
+            </div>
+        </div>
+    </div>
+        <div class="flex">
+        <div>
+            <button mat-button (click)="setView('week')" [color]="view==='week'?'primary':''" >Week</button>
+            <button mat-button (click)="setView('day')" [color]="view==='day'?'primary':''" >Day</button>
+        </div>
+
+        <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+        (viewDateChange)="fetchEvents()" (viewChange)="fetchEvents()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="fetchEvents()"
+        (viewChange)="fetchEvents()">
+            <mat-icon matTooltipClass="customized-tooltip">today</mat-icon>
+        </button>
+        <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="fetchEvents()"
+        (viewChange)="fetchEvents()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+    
+<mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [hourSegments]="1"
+>
+</mwl-calendar-week-view>
