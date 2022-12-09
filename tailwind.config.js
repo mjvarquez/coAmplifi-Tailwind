@@ -65,7 +65,7 @@ const themes = {
  */
 const config = {
     darkMode   : 'class',
-    content    : ['./src/**/*.{html,scss,ts}'],
+    content    : ['./src/**/*.{html,scss,ts}', , './node_modules/tw-elements/dist/js/**/*.js'],
     important  : true,
     theme      : {
         fontSize: {
@@ -288,7 +288,8 @@ const config = {
 
         // Other third party and/or custom plugins
         require('@tailwindcss/typography')({modifiers: ['sm', 'lg']}),
-        require('@tailwindcss/line-clamp')
+        require('@tailwindcss/line-clamp'),
+        require('tw-elements/dist/plugin')
     ]
 };
 

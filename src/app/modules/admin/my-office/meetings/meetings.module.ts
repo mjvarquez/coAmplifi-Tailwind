@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingsComponent } from './meetings.component';
 import { Route, RouterModule } from '@angular/router';
-import { SharedModule } from 'app/shared/shared.module';
 import { MyOfficeSharedModule } from '../shared/shared.module';
+import { FuseCardModule } from '@fuse/components/card';
+import { MeetingFormComponent } from './components/meeting-form/meeting-form.component';
 
 const MeetingsRoutes: Route[] = [
   {
@@ -27,12 +28,18 @@ const MeetingsRoutes: Route[] = [
 
 @NgModule({
   declarations: [
-    MeetingsComponent
+    MeetingsComponent,
+    MeetingFormComponent
   ],
   imports: [
     CommonModule,
     MyOfficeSharedModule,
+    FuseCardModule,
     RouterModule.forChild(MeetingsRoutes),
+  ],
+  exports: [
+    FuseCardModule,
+    MeetingFormComponent
   ]
 })
 export class MeetingsModule { }

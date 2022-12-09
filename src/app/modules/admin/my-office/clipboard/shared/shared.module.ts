@@ -33,7 +33,6 @@ import { MatChipsModule } from '@angular/material/chips';
     MatMenuModule,
     MatTabsModule,
     RouterModule,
-    CommonModule,
     MatSidenavModule,
     MatToolbarModule,
     FuseScrollbarModule,
