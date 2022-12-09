@@ -14,11 +14,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'app-task-editor',
-  templateUrl: './task-editor.component.html',
-  styleUrls: ['./task-editor.component.scss']
+  selector: 'app-timeclock-editor',
+  templateUrl: './timeclock-editor.component.html',
+  styleUrls: ['./timeclock-editor.component.scss']
 })
-export class TaskEditorComponent implements OnInit {
+export class TimeClockEditorComponent implements OnInit {
   displayedColumns: string[] = ['clock_in_out', 'task', 'period_type', 'work_hours', 'action'];
   dataSource = new ExampleDataSource();
 

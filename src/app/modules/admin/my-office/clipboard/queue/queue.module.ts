@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { TaskEditorComponent } from './task-editor.component';
+import { QueueComponent } from './queue.component';
 import { BreadcrumbComponent } from '../../shared/breadcrumb/breadcrumb.component';
-import {  ClipboardSharedModule } from '../shared/shared.module';
 import { MyOfficeSharedModule } from '../../shared/shared.module';
-import {MatTableModule} from '@angular/material/table';
-import {CdkTableModule} from '@angular/cdk/table';
-import { SharedModule } from 'app/shared/shared.module';
-const TaskEditorRoutes: Route[] = [
+import { ClipboardSharedModule } from '../shared/shared.module';
+import {MatChipsModule} from '@angular/material/chips';
+
+const QueueRoutes: Route[] = [
     {
         path     : '',
-        title: 'Timeclock Editor',
-        component: TaskEditorComponent,
+        title: 'Queue',
         data: {
             sub_menu: [
                 {
@@ -27,31 +25,29 @@ const TaskEditorRoutes: Route[] = [
                 {
                     label: 'Queue(0)', 
                     icon: 'mat_outline:upcoming',
-                    url: '/task/myClipboard/docket'
+                    url: '/task/myClipboard/queue'
                 },
                 {
                     label: 'Timeclock Editor',
                     icon: 'mat_outline:edit_calendar',
-                    url: '/task/myClipboard/taskEditor'
+                    url: '/task/myClipboard/timeClockEditor'
                 },
             ]
         },
+        component: QueueComponent,
     }
 ];
 
 @NgModule({
     declarations: [
-        TaskEditorComponent
+        QueueComponent
     ],
     imports     : [
         ClipboardSharedModule,
         MyOfficeSharedModule,
-        SharedModule,
-        CdkTableModule,
-        MatTableModule,
-        RouterModule.forChild(TaskEditorRoutes)
+        RouterModule.forChild(QueueRoutes)
     ]
 })
-export class TaskEditorModule
+export class DocketModule
 {
 }

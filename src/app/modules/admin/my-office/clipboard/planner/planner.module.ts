@@ -25,12 +25,12 @@ const plannerRoutes: Route[] = [
                 {
                     label: 'Queue(0)', 
                     icon: 'mat_outline:upcoming',
-                    url: '/task/myClipboard/docket'
+                    url: '/task/myClipboard/queue'
                 },
                 {
                     label: 'Timeclock Editor',
                     icon: 'mat_outline:edit_calendar',
-                    url: '/task/myClipboard/taskEditor'
+                    url: '/task/myClipboard/timeClockEditor'
                 },
             ]
         },

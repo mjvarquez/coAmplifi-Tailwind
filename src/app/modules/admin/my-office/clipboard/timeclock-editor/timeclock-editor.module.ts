@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { DocketComponent } from './docket.component';
+import { TimeClockEditorComponent } from './timeclock-editor.component';
 import { BreadcrumbComponent } from '../../shared/breadcrumb/breadcrumb.component';
+import {  ClipboardSharedModule } from '../shared/shared.module';
 import { MyOfficeSharedModule } from '../../shared/shared.module';
-import { ClipboardSharedModule } from '../shared/shared.module';
-import {MatChipsModule} from '@angular/material/chips';
-
-const DocketRoutes: Route[] = [
+import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
+import { SharedModule } from 'app/shared/shared.module';
+const TaskEditorRoutes: Route[] = [
     {
         path     : '',
-        title: 'Queue',
+        title: 'Timeclock Editor',
+        component: TimeClockEditorComponent,
         data: {
             sub_menu: [
                 {
@@ -25,29 +27,31 @@ const DocketRoutes: Route[] = [
                 {
                     label: 'Queue(0)', 
                     icon: 'mat_outline:upcoming',
-                    url: '/task/myClipboard/docket'
+                    url: '/task/myClipboard/queue'
                 },
                 {
                     label: 'Timeclock Editor',
                     icon: 'mat_outline:edit_calendar',
-                    url: '/task/myClipboard/taskEditor'
+                    url: '/task/myClipboard/timeClockEditor'
                 },
             ]
         },
-        component: DocketComponent,
     }
 ];
 
 @NgModule({
     declarations: [
-        DocketComponent
+        TimeClockEditorComponent
     ],
     imports     : [
         ClipboardSharedModule,
         MyOfficeSharedModule,
-        RouterModule.forChild(DocketRoutes)
+        SharedModule,
+        CdkTableModule,
+        MatTableModule,
+        RouterModule.forChild(TaskEditorRoutes)
     ]
 })
-export class DocketModule
+export class TaskEditorModule
 {
 }

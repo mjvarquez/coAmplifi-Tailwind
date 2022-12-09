@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-docket',
-  templateUrl: './docket.component.html',
-  styleUrls: ['./docket.component.scss']
+  selector: 'app-queue',
+  templateUrl: './queue.component.html',
+  styleUrls: ['./queue.component.scss']
 })
-export class DocketComponent implements OnInit {
+export class QueueComponent implements OnInit {
   drawerMode: 'over' | 'side' = 'side';
   drawerOpened: boolean = false;
   selectAll:boolean = true;

@@ -31,13 +31,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'docket',
                 title: 'Docket',
                 type : 'basic',
-                link: '/task/myClipboard/docket'
+                link: '/task/myClipboard/queue'
             },
             {
                 id   : 'taskEditor',
                 title: 'Timeclock Editor',
                 type : 'basic',
-                link: '/task/myClipboard/taskEditor'
+                link: '/task/myClipboard/timeClockEditor'
             }
         ]
     },
