@@ -11,6 +11,8 @@ import { FuseAlertModule } from '@fuse/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthSignInComponent } from 'app/modules/auth/sign-in/sign-in.component';
 import { authSignInRoutes } from 'app/modules/auth/sign-in/sign-in.routing';
+import { CommonModule } from '@angular/common';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,10 @@ import { authSignInRoutes } from 'app/modules/auth/sign-in/sign-in.routing';
         MatProgressSpinnerModule,
         FuseCardModule,
         FuseAlertModule,
-        SharedModule
+        SharedModule,
+        CommonModule,
+        RecaptchaModule,
+        RecaptchaFormsModule
     ]
 })
 export class AuthSignInModule

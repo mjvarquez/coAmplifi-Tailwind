@@ -1,0 +1,26 @@
+{
+  "/uaa": {
+    "target": "https://coamplifi-dev.curaesoft.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/cp/*": {
+    "target": "https://coamplifi-dev.curaesoft.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/cs/*": {
+    "target": "https://coamplifi-dev.curaesoft.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/cg/*": {
+    "target": "https://coamplifi-dev.curaesoft.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

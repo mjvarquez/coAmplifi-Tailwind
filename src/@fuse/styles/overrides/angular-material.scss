@@ -179,10 +179,13 @@
     }
 
     /* On palette colored buttons, use a darker color */
-    &.mat-primary,
+    &.mat-primary {
+        @apply bg-orange-500 #{'!important'};
+    }
+    
     &.mat-accent,
     &.mat-warn {
-
+        
         .mat-button-focus-overlay {
             background-color: rgba(0, 0, 0, 0.1) !important;
         }
@@ -208,7 +211,7 @@
     }
 
     &.mat-button-disabled {
-
+        @apply bg-gray-200 #{'!important'};
         .mat-button-focus-overlay {
             opacity: 0 !important;
         }

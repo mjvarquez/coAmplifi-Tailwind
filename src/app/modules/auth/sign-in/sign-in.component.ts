@@ -5,6 +5,10 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
 
+export interface FormModel {
+    captcha?: string;
+}
+
 @Component({
     selector     : 'auth-sign-in',
     templateUrl  : './sign-in.component.html',
@@ -13,6 +17,10 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class AuthSignInComponent implements OnInit
 {
+    public formModel: FormModel = {};
+    skipReCaptcha: boolean = false;
+    captchaResponse: string;
+    reCaptchaSiteKey: string;
     @ViewChild('signInNgForm') signInNgForm: NgForm;
 
     alert: { type: FuseAlertType; message: string } = {
@@ -43,12 +51,19 @@ export class AuthSignInComponent implements OnInit
      */
     ngOnInit(): void
     {
+        let host = window.location.hostname;
+        this.reCaptchaSiteKey = '6LcTWu0UAAAAAIBiIff33I6uqE8AkaxELEU0gbt2';
+
         // Create the form
         this.signInForm = this._formBuilder.group({
             email     : ['hughes.brian@company.com', [Validators.required, Validators.email]],
             password  : ['admin', Validators.required],
             rememberMe: ['']
         });
+    }
+
+    async resolved(captchaResponse: string) {
+        this.captchaResponse = captchaResponse;
     }
 
     // -----------------------------------------------------------------------------------------------------
