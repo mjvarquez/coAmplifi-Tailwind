@@ -16,6 +16,10 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { MeetingsComponent } from './modules/admin/my-office/meetings/meetings.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from 'store/app.effects';
+import { StoreModule } from '@ngrx/store';
+import * as fromApp from 'store/app.reducer';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -45,6 +49,10 @@ const routerConfig: ExtraOptions = {
 
         // Layout module of your application
         LayoutModule,
+
+        StoreModule.forRoot(fromApp.appReducer),
+
+        EffectsModule.forRoot(AppEffects),
 
         // 3rd party modules that require global configuration via forRoot
         MarkdownModule.forRoot({}),

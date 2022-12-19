@@ -1,12 +1,14 @@
 import { createAction, props } from '@ngrx/store';
+import { AuthCredential } from 'app/models/auth';
 
 export const authLoginRequestedAction = createAction(
-  '[Auth] Auth Login Requested Action'
+  '[Auth] Auth Login Requested Action',
+  props<{ payload: AuthCredential }>()
 );
 
 export const authLoginSucceededAction = createAction(
   '[Auth] Auth Login Succeeded Action',
-  props<{ data: any }>()
+  props<{ payload: any }>()
 );
 
 export const authRegisterRequestedAction = createAction(
