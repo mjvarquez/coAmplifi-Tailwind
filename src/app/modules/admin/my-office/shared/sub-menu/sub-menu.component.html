@@ -1,1 +1,20 @@
-<p>sub-menu works!</p>
+<nav *ngIf="linkTab" mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link *ngFor="let menu of sub_menu"
+       (click)="clickMenuChangeActive(menu)"
+       [active]="activeTab == menu.url"> 
+       <mat-icon [svgIcon]="menu.icon"></mat-icon>
+       {{menu.label}}
+    </a>
+</nav>
+
+<nav [class]="background" *ngIf="!linkTab" mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link *ngFor="let menu of sub_menu"
+       (click)="clickMenuChangeActive(menu)"
+       [active]="activeTab == menu.label"
+       > 
+       <mat-icon [svgIcon]="menu.icon"></mat-icon>
+       {{menu.label}} 
+    </a>
+</nav>
+
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

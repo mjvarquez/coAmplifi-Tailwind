@@ -1,0 +1,78 @@
+<div class="flex mx-3 my-5 flex-col flex-auto min-w-0">
+    <app-breadcrumb></app-breadcrumb>
+    <app-sub-menu [linkTab]="true"></app-sub-menu>
+
+    <!-- CONTENT GOES HERE -->
+    <div class="p-3">
+        <span class="text-lg block">Viewing & editing today's completed tasks. For other day's, go to any day <a class="text-blue-500" href="#">Timeclock Editor.</a></span>
+        <button mat-flat-button 
+        class="bg-transparent text-orange-500 mb-2"
+        >
+            <mat-icon svgIcon="mat_outline:directions_run"></mat-icon>
+            Update timecard
+        </button>
+
+        <table class="bg-white rounded-lg" cdk-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container cdkColumnDef="clock_in_out">
+                <th class="bg-gray-200 border-b border-b-orange-500 p-3 rounded-tl-lg text-left" cdk-header-cell *cdkHeaderCellDef>
+                    <span class="font-medium block">Clock In/Out</span>
+                    <span class="font-light">(Day)</span>
+                </th>
+              <td class="relative px-4 py-2 timecard-periodType" cdk-cell *cdkCellDef="let element"> 
+                <span class="block leading-4">{{element.clock_in_out}}</span>
+                <small class="opacity-90">2022-11-19</small>
+              </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container cdkColumnDef="task">
+                <th class="bg-gray-200 border-b border-b-orange-500 p-3 text-left" cdk-header-cell *cdkHeaderCellDef>
+                    <span class="font-medium block">Task</span>
+                    <span class="font-light">(Detail)</span>
+                </th>
+                <td cdk-cell *cdkCellDef="let element"> 
+                <span class="block">{{element.task}}</span>
+                <small class="opacity-90">unknown</small>
+                </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container cdkColumnDef="period_type">
+                <th class="bg-gray-200 border-b border-b-orange-500 p-3 text-left" cdk-header-cell *cdkHeaderCellDef>
+                    <span class="font-medium block">Period Type</span>
+                </th>
+                <td cdk-cell *cdkCellDef="let element"> 
+                    <span class="block">{{element.period_type}}</span>
+                </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container cdkColumnDef="work_hours">
+              <th class="bg-gray-200 border-b border-b-orange-500 p-3 text-left" cdk-header-cell *cdkHeaderCellDef>
+                    <span class="font-medium block">Work Hours</span>
+                </th>
+                <td cdk-cell *cdkCellDef="let element"> 
+                    <span class="block">{{element.work_hours}} </span>
+                    <small class="opacity-90">(23:59:59)</small>
+                </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container cdkColumnDef="action">
+                <th class="bg-gray-200 border-b border-b-orange-500 rounded-tr-lg p-3 text-left" cdk-header-cell *cdkHeaderCellDef>
+                      <span class="font-medium block">Action</span>
+                  </th>
+                <td cdk-cell *cdkCellDef="let element"> 
+                    <button class="text-blue-500 shadow-none bg-transparent" mat-mini-fab aria-label="Example icon button with a menu icon">
+                        <mat-icon svgIcon="mat_outline:add_task"></mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+          
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+
+</div>

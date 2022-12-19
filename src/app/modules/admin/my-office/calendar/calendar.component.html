@@ -1,0 +1,253 @@
+<div class="flex shadow-none mx-3 my-5 flex-col flex-auto h-auto">
+    <app-breadcrumb></app-breadcrumb>
+    <app-sub-menu class="mt-3" background="bg-white" (changeTab)="changeTab($event)"></app-sub-menu>
+
+    <!-- task tool bar start -->
+    <mat-toolbar *ngIf="schedulerContainer" class="no-shadow flex justify-between bg-gray-200">
+      <div>
+        <span class="h3 font-medium">{{ viewDate | calendarDate:(view +
+          'ViewTitle'):'en' }}</span>
+        <button mat-flat-button (click)="matDrawer.toggle()" class="sidebar-toggle m-r-10 bg-transparent text-orange-500">
+            <mat-icon svgIcon="mat_outline:add_task"></mat-icon>
+          <ng-container>Add Task</ng-container>
+        </button>
+      </div>
+      <div class="flex">
+          <div>
+              <button mat-button (click)="setView('week')" [color]="view==='week'?'primary':''" >Week</button>
+              <button mat-button (click)="setView('day')" [color]="view==='day'?'primary':''" >Day</button>
+          </div>
+  
+          <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+          (viewDateChange)="fetchEvents()" (viewChange)="fetchEvents()">
+              <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="fetchEvents()"
+          (viewChange)="fetchEvents()">
+              <mat-icon matTooltipClass="customized-tooltip">today</mat-icon>
+          </button>
+          <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="fetchEvents()"
+          (viewChange)="fetchEvents()">
+              <mat-icon>chevron_right</mat-icon>
+          </button>
+  
+          <button mat-icon-button (click)="clickSetting()" class="sidebar-toggle m-r-10" value="sidebarclosed">
+              <mat-icon svgIcon="mat_outline:settings"></mat-icon>
+          </button>
+      </div>
+    </mat-toolbar>
+      <!-- task tool bar end -->
+      <mat-drawer-container class="flex-auto">
+        <!-- Drawer -->
+        <mat-drawer
+            class="w-90 dark:bg-gray-900"
+            [autoFocus]="false"
+            [mode]="drawerMode"
+            [opened]="drawerOpened"
+            (openedChange)="onOpenedChange($event)"
+            #matDrawer
+            >
+            <div class="p-3">
+              <mat-slide-toggle
+              color="primary"
+              >Primary functions only</mat-slide-toggle>
+
+              <mat-tab-group
+              class="mat-tab-no-flex-container"
+              mat-align-tabs="start"
+              mat-stretch-tabs="false"
+              >
+                <mat-tab> 
+                  <ng-template mat-tab-label>
+                    <mat-icon svgIcon="mat_outline:add_task"></mat-icon>
+                    Business
+                  </ng-template>
+                  <mat-accordion>
+                    <mat-expansion-panel 
+                    class="rounded-none drop-shadow-sm shadow-black" 
+                    (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false"
+                    
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="flex justify-between">
+                          <span>Personal</span>
+                          <span>(1)</span>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div>
+                        <mat-selection-list style="position: static !important; z-index:1 !important" #templates [multiple]="false">
+                          <mat-list-option 
+                            color='primary'
+                            mwlDraggable
+                            [value]="{plannerKey: 1, task: 'test'}"
+                            [dropData]="{event: {id: 'NewEvent', plannerKey: 1, task: 'test'}}"
+                            dragActiveClass="drag-active"
+                            dragOverClass="cal-drag-over"
+                            [touchStartLongPress]="{ delay: 300, delta: 30 }"
+                            checkboxPosition="before"
+                            >
+                            <span class='list-title'>
+                              test
+                            </span>
+                          </mat-list-option>
+                        </mat-selection-list>
+                      </div>
+                      <!-- <app-clipboard-tasklist-item></app-clipboard-tasklist-item> -->
+                    </mat-expansion-panel>
+                    <mat-expansion-panel 
+                    class="rounded-none drop-shadow-2xl shadow-black" 
+                    (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="flex justify-between">
+                          <span>Business Task</span>
+                          <span>(1)</span>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>test
+                      <!-- <app-clipboard-tasklist-item></app-clipboard-tasklist-item> -->
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </mat-tab>
+                <mat-tab> 
+                  <ng-template mat-tab-label>
+                    <mat-icon svgIcon="mat_outline:school"></mat-icon>
+                    Learning
+                  </ng-template>
+                  test
+                </mat-tab>
+                <mat-tab> 
+                  <ng-template mat-tab-label>
+                    <mat-icon svgIcon="mat_outline:work_off"></mat-icon>
+                    Personal
+                  </ng-template>
+                  test
+                </mat-tab>
+              </mat-tab-group> 
+            </div>
+        </mat-drawer>
+
+          <!-- Drawer content -->
+          <mat-drawer-content class="flex flex-col">
+      
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- CONTENT GOES HERE -->
+                <div class="h-400 min-h-400 max-h-400 rounded-2xl">
+                  <div *ngIf="showSetting" class="flex flex-row" >
+                    <fuse-card class="basis-1/2 m-4 p-6 flex-col">
+                      <ng-container>
+                        <div class="text-lg font-bold mb-6 border-b">Calendar Hour Range</div>
+                        <ngx-slider [(value)]="dayCalendarStartHour" [(highValue)]="dayCalendarEndHour"
+                              [options]="dayCalendarOptions"></ngx-slider>
+                      </ng-container>
+                    </fuse-card>
+                    <fuse-card class="basis-1/2 m-4 p-6 flex-col">
+                      <ng-container>
+                        <div class="text-lg font-bold mb-6 border-b">Calendar Hour Segment(s)</div>
+                        <ngx-slider [(value)]="hourSegment" [options]="hourSegmentOptions"></ngx-slider>
+                      </ng-container>
+                      
+                    </fuse-card>
+                  </div>
+                  <!-- Scheduler -->
+                  <div *ngIf="schedulerContainer" class="overflow-auto ">
+                    <div [ngSwitch]="view" [perfectScrollbar]="config" class="h-200"> 
+                      <mwl-calendar-week-view
+                          *ngSwitchCase="'week'"
+                          [viewDate]="viewDate"
+                          [events]="events"
+                          [eventTemplate]="customCellTemplate"
+                          [dayStartHour]='dayCalendarStartHour'
+                          [dayEndHour]='dayCalendarEndHour'
+                          [snapDraggedEvents]="false"
+                          [refresh]="refresh"
+                          [hourSegments]="hourSegment"
+                          [hourSegmentTemplate]="hourSegmentView"
+                          >
+                      </mwl-calendar-week-view>
+                      <mwl-calendar-day-view
+                          *ngSwitchCase="'day'"
+                          [viewDate]="viewDate"
+                          [events]="events"
+                          [eventTemplate]="customCellTemplate"
+                          [dayStartHour]='dayCalendarStartHour'
+                          [dayEndHour]='dayCalendarEndHour'
+                          [snapDraggedEvents]="false"
+                          [refresh]="refresh"
+                          [hourSegments]="hourSegment"
+                          [hourSegmentTemplate]="hourSegmentView"
+                          >
+                      </mwl-calendar-day-view>
+                    </div>
+                  </div>
+                  <!-- Timetable -->
+                  <div *ngIf="timetableContainer" [perfectScrollbar]="config">
+                      <app-kanban-task-calendar></app-kanban-task-calendar>
+                  </div>
+                </div>
+            </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
+
+    <ng-template
+     #hourSegmentView
+     let-segment="segment"
+     let-locale="locale"
+     let-segmentHeight="segmentHeight"
+     let-isTimeLabel="isTimeLabel"
+     let-daysInWeek="daysInWeek"
+   >
+     <div
+       [attr.aria-hidden]="
+         {}
+           | calendarA11y
+             : (daysInWeek === 1
+                 ? 'hideDayHourSegment'
+                 : 'hideWeekHourSegment')
+       "
+       class="cal-hour-segment"
+       [style.height.px]="segmentHeight"
+       [class.cal-hour-start]="segment.isStart"
+       [class.cal-after-hour-start]="!segment.isStart"
+       [ngClass]="segment.cssClass"
+       (dblclick)="clickHourSegment()"
+     >
+       <div class="cal-time" *ngIf="isTimeLabel">
+         {{
+           segment.displayDate
+             | calendarDate
+               : (daysInWeek === 1 ? 'dayViewHour' : 'weekViewHour')
+               : locale
+         }}
+       </div>
+     </div>
+   </ng-template>
+    
+    <ng-template #customCellTemplate let-weekEvent="weekEvent" let-tooltipPlacement="tooltipPlacement"
+      let-eventClicked="eventClicked" let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody" let-tooltipDisabled="tooltipDisabled"
+      let-tooltipDelay="tooltipDelay" let-column="column" let-daysInWeek="daysInWeek">
+
+        <fuse-alert
+            [type]="'primary'"
+            [appearance]="'border'"
+            [showIcon]="false"
+            class="h-auto"
+            >
+            <span class="block">{{weekEvent.event.title}}</span>
+            <span class="italic opacity-50 block">sample description</span>
+            <span class="font-light">2h 19m</span>
+        </fuse-alert>
+    </ng-template>
+
+    <div fxLayout="row wrap" *ngIf="showSetting">
+      <section class="example-section m-l-20">
+        <mat-slide-toggle (change)="showInactiveTimeOnChange()" class="example-margin" [color]="color"
+          [checked]="showInactiveTime">
+          Show Inactive Time
+        </mat-slide-toggle>
+      </section>
+    </div>
+</div>

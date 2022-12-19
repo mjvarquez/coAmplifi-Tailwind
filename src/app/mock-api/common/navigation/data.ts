@@ -7,21 +7,46 @@ export const defaultNavigation: FuseNavigationItem[] = [
         title: 'Calendar',
         type : 'basic',
         icon : 'mat_outline:calendar_today',
-        link : '/example'
+        link : '/task/myTaskPlanner'
     },
     {
         id   : 'clipboard',
         title: 'Clipboard',
-        type : 'basic',
+        type : 'collapsable',
         icon : 'mat_outline:calendar_view_week',
-        link : '/task/myClipboard/kanban'
+        children: [
+            {
+                id   : 'kanban',
+                title: 'My Clipboard',
+                type : 'basic',
+                link: '/task/myClipboard/kanban'
+            },
+            {
+                id   : 'planner',
+                title: 'My Planner',
+                type : 'basic',
+                link: '/task/myClipboard/planner'
+            },
+            {
+                id   : 'docket',
+                title: 'Docket',
+                type : 'basic',
+                link: '/task/myClipboard/queue'
+            },
+            {
+                id   : 'taskEditor',
+                title: 'Timeclock Editor',
+                type : 'basic',
+                link: '/task/myClipboard/timeClockEditor'
+            }
+        ]
     },
     {
         id   : 'meetings',
         title: 'Meetings',
         type : 'basic',
         icon : 'heroicons_outline:user-group',
-        link : '/meetings'
+        link : '/task/meetingv1',
     },
     {
         id   : 'projects',

@@ -1,1 +1,29 @@
-<h4 class="bold">{{pageTitle}}</h4>
+<div class="flex justify-between">
+    <div class="flex">
+        <h2 class="text-lg font-bold">{{pageTitle}}</h2> 
+        <button
+            class="fuse-mat-button-sm text-blue-400 -mt-2 min-w-6 min-h-6 bg-transparent p-2"
+            mat-flat-button
+            [matMenuTriggerFor]="clipboardMatMenu"
+        >
+            <mat-icon svgIcon="mat_outline:link"></mat-icon>
+        </button>
+    </div>
+    <mat-menu #clipboardMatMenu="matMenu">
+        <button class="hover:text-orange-500" mat-menu-item>Calendar</button>
+        <button class="hover:text-orange-500" mat-menu-item>Chart</button>
+        <button class="hover:text-orange-500" mat-menu-item>Fishtank</button>
+        <button class="hover:text-orange-500" mat-menu-item>Meetings</button>
+        <button class="hover:text-orange-500" mat-menu-item>Projects</button>
+        <button class="hover:text-orange-500" mat-menu-item>Timeclock Editor Any Day</button>
+        <button class="hover:text-orange-500" mat-menu-item>Timecard Report</button>
+        <button class="hover:text-orange-500" mat-menu-item>Time Off</button>
+    </mat-menu>
+
+    <span class="isolate inline-flex rounded-md shadow-sm">
+        <span class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">Workday not started: clock in or start a task</span>
+        <button type="button" class="relative -ml-px inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"><mat-icon class="mr-1" svgIcon="mat_outline:login"></mat-icon> Start work</button>
+        <button type="button" class="relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"><mat-icon svgIcon="mat_outline:unfold_more"></mat-icon></button>
+    </span>
+</div>
+

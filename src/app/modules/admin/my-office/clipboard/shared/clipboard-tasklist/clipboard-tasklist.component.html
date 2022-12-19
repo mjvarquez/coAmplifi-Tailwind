@@ -1,0 +1,29 @@
+<div fuseScrollbar>
+    <mat-accordion>
+        <mat-expansion-panel 
+        class="rounded-none drop-shadow-sm shadow-black" 
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title class="flex justify-between">
+              <span>Favorite Tasks</span>
+              <span>(1)</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-clipboard-tasklist-item></app-clipboard-tasklist-item>
+        </mat-expansion-panel>
+        <mat-expansion-panel 
+        class="rounded-none drop-shadow-2xl shadow-black" 
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="flex justify-between">
+              <span>Insta Tasks</span>
+              <span>(1)</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-clipboard-tasklist-item></app-clipboard-tasklist-item>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

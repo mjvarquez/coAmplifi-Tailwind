@@ -1,14 +1,79 @@
-<div class="flex mx-3 my-5 flex-col flex-auto min-w-0">
+<div class="flex shadow-none mx-3 my-5 flex-col flex-auto min-w-0">
     <app-breadcrumb></app-breadcrumb>
-    <!-- Main -->
-    <div class="flex-auto p-6 sm:p-10">
-
-        <!-- CONTENT GOES HERE -->
-        <div class="h-400 min-h-400 max-h-400 border-gray-300 rounded-2xl">
-            
-            kanban
-        </div>
-
-    </div>
-
+    <app-sub-menu [linkTab]="true"></app-sub-menu>
+        <mat-drawer-container class="flex-auto">
+            <!-- Drawer -->
+            <mat-drawer
+                class="w-80 dark:bg-gray-900"
+                [autoFocus]="false"
+                [mode]="drawerMode"
+                [opened]="drawerOpened"
+                (openedChange)="onOpenedChange($event)"
+                #matDrawer>
+                <mat-toolbar class="bg-gray-200">
+                    <mat-toolbar-row class="flex-row">
+                        <div class="basis-11/12">
+                            <button mat-flat-button
+                            class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
+                            >
+                            Favorite Tasks
+                            </button>
+                            <button mat-flat-button
+                                class="bg-transparent shadow-none hover:bg-orange-50 text-orange-500"
+                                >
+                                All Tasks
+                            </button>
+                        </div>
+                        <button mat-mini-fab
+                            class="bg-transparent shadow-none text-orange-500"
+                            (click)="matDrawer.toggle()"
+                            >
+                            <mat-icon svgIcon="mat_outline:close"></mat-icon>
+                        </button>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
+                <app-clipboard-tasklist></app-clipboard-tasklist>
+            </mat-drawer>
+    
+            <!-- Drawer content -->
+            <mat-drawer-content class="flex flex-col">
+    
+                <!-- Main -->
+                <div class="flex-auto px-8 py-4">
+    
+                    <!-- CONTENT GOES HERE -->
+                    <div class="h-400 min-h-400 max-h-400 rounded-2xl">
+                        <button mat-flat-button 
+                        class="bg-transparent text-orange-500"
+                        (click)="matDrawer.toggle()"
+                        >
+                            <mat-icon *ngIf="!drawerOpened" svgIcon="mat_outline:menu_open"></mat-icon>
+                            <mat-icon *ngIf="drawerOpened" svgIcon="mat_outline:arrow_back_ios"></mat-icon>
+                            Task List
+                        </button>
+                        <button mat-flat-button class="bg-transparent text-orange-500" aria-label="Example icon button with a vertical three dot icon">
+                            <mat-icon svgIcon="mat_outline:refresh"></mat-icon>
+                            Refresh
+                        </button>
+                        <div class="grid grid-cols-3 gap-4 mt-4">
+                            <div>
+                                <!-- <app-kanban-empty-card errorTitle="Todo list empty"></app-kanban-empty-card> -->
+                                <app-clipboard-card></app-clipboard-card>
+                            </div>
+                            <div>
+                                <app-clipboard-card></app-clipboard-card>
+                                <!-- <app-clipboard-empty-card errorTitle="Doing list empty"></app-clipboard-empty-card> -->
+                            </div>
+                            <div>
+                                <app-clipboard-card></app-clipboard-card>
+                                <!-- <app-clipboard-empty-card errorTitle="Done list empty"></app-clipboard-empty-card> -->
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </mat-drawer-content>
+    
+        </mat-drawer-container>
 </div>
