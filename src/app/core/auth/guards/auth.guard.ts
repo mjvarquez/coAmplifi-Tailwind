@@ -70,23 +70,24 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
     private _check(redirectURL: string): Observable<boolean>
     {
         // Check the authentication status
-        return this._authService.check()
-                   .pipe(
-                       switchMap((authenticated) => {
+        // return this._authService.check()
+        //            .pipe(
+        //                switchMap((authenticated) => {
 
-                           // If the user is not authenticated...
-                           if ( !authenticated )
-                           {
-                               // Redirect to the sign-in page
-                               this._router.navigate(['sign-in'], {queryParams: {redirectURL}});
+        //                    // If the user is not authenticated...
+        //                    if ( !authenticated )
+        //                    {
+        //                        // Redirect to the sign-in page
+        //                        this._router.navigate(['sign-in'], {queryParams: {redirectURL}});
 
-                               // Prevent the access
-                               return of(false);
-                           }
+        //                        // Prevent the access
+        //                        return of(false);
+        //                    }
 
-                           // Allow the access
-                           return of(true);
-                       })
-                   );
+        //                    // Allow the access
+        //                    return of(true);
+        //                })
+        //            );
+        return of(true);
     }
 }
