@@ -23,5 +23,4 @@ export class AccessToken {
     currentUser: any;
     expirationDatetime: Date;
     issueDatetime: Date;
-  }
-  
+}
