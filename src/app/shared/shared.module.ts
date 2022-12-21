@@ -11,6 +11,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { SubMenuComponent } from './sub-menu/sub-menu.component';
 
 @NgModule({
     imports: [
@@ -26,6 +28,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
             provide: DateAdapter, 
             useFactory: adapterFactory 
         }),
+        MatTabsModule
     ],
     exports: [
         CommonModule,
@@ -38,11 +41,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         CalendarModule,
         MatIconModule,
         MatButtonModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatTabsModule
     ],
     declarations: [
       TableComponent,
-      KanbanTaskCalendarComponent
+      KanbanTaskCalendarComponent,
+      SubMenuComponent
     ]
 })
 export class SharedModule
