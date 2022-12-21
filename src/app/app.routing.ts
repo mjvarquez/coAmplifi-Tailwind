@@ -80,6 +80,7 @@ export const appRoutes: Route[] = [
             {path: 'task/myClipboard/timeClockEditor', loadChildren: () => import('app/modules/admin/my-office/clipboard/timeclock-editor/timeclock-editor.module').then(m => m.TaskEditorModule)},
             {path: 'task/myTaskPlanner', loadChildren: () => import('app/modules/admin/my-office/calendar/calendar.module').then(m => m.CalendarModule)},
             {path: 'task/meetingv1', loadChildren: () => import('app/modules/admin/my-office/meetings/meetings.module').then(m => m.MeetingsModule)},
+            {path: 'task/myConsole/settings', loadChildren: () => import('app/modules/admin/my-console/settings/settings.module').then(m => m.SettingsModule)},
         ]
     }
 ];
