@@ -15,26 +15,25 @@ import { appRoutes } from 'app/app.routing';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { MeetingsComponent } from './modules/admin/my-office/meetings/meetings.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from 'store/app.effects';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from 'store/app.reducer';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
+    suppressScrollX: true
 };
 
 const routerConfig: ExtraOptions = {
-    preloadingStrategy       : PreloadAllModules,
+    preloadingStrategy: PreloadAllModules,
     scrollPositionRestoration: 'enabled'
 };
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes, routerConfig),
@@ -56,18 +55,17 @@ const routerConfig: ExtraOptions = {
 
         // 3rd party modules that require global configuration via forRoot
         MarkdownModule.forRoot({}),
-        
+
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ],
     providers: [
         {
-          provide: PERFECT_SCROLLBAR_CONFIG,
-          useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+            provide: PERFECT_SCROLLBAR_CONFIG,
+            useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
         }
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }
