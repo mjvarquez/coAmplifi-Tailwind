@@ -81,7 +81,7 @@ export const appRoutes: Route[] = [
             { path: 'task/myTaskPlanner', loadChildren: () => import('app/modules/admin/my-office/calendar/calendar.module').then(m => m.CalendarModule) },
             { path: 'task/meetingv1', loadChildren: () => import('app/modules/admin/my-office/meetings/meetings.module').then(m => m.MeetingsModule) },
             { path: 'task/myConsole/settings', loadChildren: () => import('app/modules/admin/my-console/settings/settings.module').then(m => m.SettingsModule) },
-            { path: 'task/myConsole/personal', loadChildren: () => import('app/modules/admin/my-console/personal/personal.module').then(m => m.PersonalModule) },
+            { path: 'task/myConsole/personal', loadChildren: () => import('app/modules/admin/my-console/components/personal.module').then(m => m.PersonalModule) },
 
         ]
     }
