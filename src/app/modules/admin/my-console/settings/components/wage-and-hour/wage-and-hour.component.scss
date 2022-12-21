@@ -1,0 +1,44 @@
+.parent{
+    @apply 
+    max-w-sm 
+    p-6 
+    bg-white 
+    border 
+    border-gray-200 
+    rounded-lg 
+    shadow-md 
+    dark:bg-gray-800 
+    dark:border-gray-800 
+}
+
+.checkbox{
+    @apply 
+    w-4 h-4 
+    text-blue-600 
+    bg-gray-100 
+    rounded 
+    border-gray-300 
+    focus:ring-blue-500 
+    dark:focus:ring-blue-600 
+    dark:ring-offset-gray-800 
+    focus:ring-2 
+    dark:bg-gray-700 
+    dark:border-gray-600;
+}
+
+.checkbox-label{
+    @apply
+    mr-2 text-sm 
+    font-medium 
+    text-gray-400 
+    dark:text-gray-500
+}
+
+//  ::ng-deep mat-checkbox-layout{
+//     justify-content: space-between;
+//  }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #F97316 !important;
+}
+
