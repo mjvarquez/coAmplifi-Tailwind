@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>Add Group of Personal Activities</h3>
+<div mat-dialog-content>
+    <form [formGroup]="personalActivities" (ngSubmit)="submitForm()">
+       <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Group Name (Can't be changed after created)*</mat-label>
+            <input matInput placeholder="" formControlName="groupName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Group Descriptions*</mat-label>
+            <textarea matInput placeholder="" formControlName="groupDescription"></textarea>
+        </mat-form-field> 
+    </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button [disabled]="!personalActivities.valid">Add</button>
+</div>
+
+ 

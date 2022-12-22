@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AccessToken } from 'app/models/auth';
 import jwt_decode from 'jwt-decode';
@@ -10,7 +11,8 @@ import * as UserProfileActions from './user-profile/user-profile.actions';
 })
 export class AuthStoreService {
 
-  constructor(private http: HttpClient, private store: Store) { }
+  constructor(private http: HttpClient, private store: Store,
+    private _router: Router) { }
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
@@ -47,14 +49,17 @@ export class AuthStoreService {
     // this.currentUserSubject.next(user);
     this.storeTokens(user);
     this.decodeAccessToken(user.access_token); // decode access token and store it as global constant
+    console.log(JSON.parse(user.currentUserInfo));
     if (this.hasApp_coAmplifi()) {
-      if (this.isSystemAdminOnly()) {
-        return;
-      }
+      console.log(true);
+      this._router.navigate(['signed-in-redirect']);
+      // if (this.isSystemAdminOnly()) {
+      //   return;
+      // }
 
     //   // load my team users & their timecard
-      this.store.dispatch(UserProfileActions.getMyDirectsRequestedAction());
-      this.getActiveJobCount();
+      // this.store.dispatch(UserProfileActions.getMyDirectsRequestedAction());
+      // this.getActiveJobCount();
     }
   }
 

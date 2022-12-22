@@ -228,7 +228,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'dashboards.project',
                 title: 'Settings',
                 type : 'basic',
-                link : '/dashboards/project'
+                link : '/myConsole/settings'
             },
         ]
     },
