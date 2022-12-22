@@ -1,3 +1,5 @@
+import { UserKey } from "./user-key";
+
 export interface AuthCredential{
     username: string;
     password: string;
@@ -23,4 +25,20 @@ export class AccessToken {
     currentUser: any;
     expirationDatetime: Date;
     issueDatetime: Date;
+}
+
+export class currentUserState {
+    access_token: string;
+    aggregateId: string;
+    applications: string[];
+    currentTenantId: string;
+    currentTenantName: string;
+    currentUserInfo: string;
+    defaultApp: string;
+    expires_in: number;
+    jti: string;
+    refresh_token: string;
+    scope: string;
+    tenants: string[];
+    token_type: string;
 }

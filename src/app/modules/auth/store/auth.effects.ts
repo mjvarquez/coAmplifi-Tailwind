@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { catchError, mergeMap, Observable, switchMap } from 'rxjs';
 import { AuthStoreService } from './auth-store.service';
 import * as AuthActions from './auth.actions';
-
+import * as UserProfileActions from './user-profile/user-profile.actions';
 
 
 @Injectable()
@@ -18,10 +18,16 @@ export class AuthEffects {
     mergeMap((payload) =>{
       // this.authStoreService.handAuthentication(payload.payload);
       return this.authStoreService.authLogin(payload.payload).pipe(
-          switchMap((response: any) => {
-            console.log(response);
+          switchMap((user: any) => {
+            console.log(user);
+            if (user && user.access_token) {
+              this.authStoreService.doLoginUser(user);
+            }
+    
+            // return user;
             return [
-              // AuthActions.authLoginSucceededAction({ payload: response })
+              // UserProfileActions.getMyDirectsRequestedAction({payload: user});
+              AuthActions.authLoginSucceededAction({payload: user})
             ]
           }),
           // catchError((error: Error) => {

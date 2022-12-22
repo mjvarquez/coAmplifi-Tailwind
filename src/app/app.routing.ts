@@ -10,7 +10,7 @@ import { InitialDataResolver } from 'app/app.resolvers';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    { path: '', pathMatch: 'full', redirectTo: 'task/myClipboard/kanban' },
+    { path: '', pathMatch: 'full', redirectTo: 'sign-in' },
 
     // Redirect signed in user to the '/example'
     //
@@ -73,15 +73,6 @@ export const appRoutes: Route[] = [
         resolve: {
             initialData: InitialDataResolver,
         },
-<<<<<<< HEAD
-        children   : [
-            {path: 'task/myClipboard/kanban', loadChildren: () => import('app/modules/admin/my-office/clipboard/kanban/kanban.module').then(m => m.KanbanModule)},
-            {path: 'task/myClipboard/planner', loadChildren: () => import('app/modules/admin/my-office/clipboard/planner/planner.module').then(m => m.PlannerModule)},
-            {path: 'task/myClipboard/queue', loadChildren: () => import('app/modules/admin/my-office/clipboard/queue/queue.module').then(m => m.DocketModule)},
-            {path: 'task/myClipboard/timeClockEditor', loadChildren: () => import('app/modules/admin/my-office/clipboard/timeclock-editor/timeclock-editor.module').then(m => m.TaskEditorModule)},
-            {path: 'task/myTaskPlanner', loadChildren: () => import('app/modules/admin/my-office/calendar/calendar.module').then(m => m.CalendarModule)},
-            {path: 'task/meetingv1', loadChildren: () => import('app/modules/admin/my-office/meetings/meetings.module').then(m => m.MeetingsModule)}
-=======
         children: [
             { path: 'task/myClipboard/kanban', loadChildren: () => import('app/modules/admin/my-office/clipboard/kanban/kanban.module').then(m => m.KanbanModule) },
             { path: 'task/myClipboard/planner', loadChildren: () => import('app/modules/admin/my-office/clipboard/planner/planner.module').then(m => m.PlannerModule) },
@@ -91,8 +82,6 @@ export const appRoutes: Route[] = [
             { path: 'task/meetingv1', loadChildren: () => import('app/modules/admin/my-office/meetings/meetings.module').then(m => m.MeetingsModule) },
             { path: 'task/myConsole/settings', loadChildren: () => import('app/modules/admin/my-console/settings/settings.module').then(m => m.SettingsModule) },
             { path: 'task/myConsole/personal', loadChildren: () => import('app/modules/admin/my-console/components/personal.module').then(m => m.PersonalModule) },
-
->>>>>>> f426a62f0e015af71164eb2b3bd94253b8b1eb91
         ]
     }
 ];
