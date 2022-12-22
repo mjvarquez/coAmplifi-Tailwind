@@ -1,0 +1,53 @@
+<div class="flex shadow-none mx-3 my-5 flex-col flex-auto min-w-0">
+    <div class="flex items-center">
+        <mat-icon class="mr-4">home</mat-icon>
+        <span class="text-base">Personal Activity Group</span>
+    </div>
+    <div class="flex flex-col grow shrink basis-auto box-border pt-3">
+        <div class="flex flex-col flex-wrap box-border place place-content-stretch place-content-start items-stretch max-w-full p-6">
+            <div class="flex flex-row box-border items-center place-content-start mb-6 w-full">
+                <div class="mr-4 box-border grow-0 shrink basis-auto">
+                    <mat-form-field appearance="outline" class="inline-block relative text-left leading-none w-full -mb-5 min-w-52">
+                        <mat-label>Search here...</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>  
+                </div>
+                <div class="box-border grow shrink basis-full items-center">
+                    <button class="text-text-orange items-center inline-flex" (click)="openDialog()">
+                        <span class="inline-flex items-center text-center font-medium hover:bg-neutral-200">
+                            <mat-icon class="m-2 text-text-orange">add_circle_outline</mat-icon>
+                            Add Group of Personal Activities
+                        </span>
+                    </button>
+                </div>
+            </div>   
+            <div class="flex flex-row flex-wrap box-border place-content-start place-content-stretch items-stretch max-h-full max-w-full -mb-4 -mr-4">
+                <!-- card container -->
+                <div class="block grow shrink basis-2/6 box-border max-w-[33.33%] pr-4 pb-4">
+                    <fuse-card class="flex flex-col flex-nowrap  box-border px-4 py-3">
+                        <div class=" flex flex-row flex-nowrap box-border">
+                            <div class="flex flex-col flex-nowrap box-border grow shrink basis-full max-w-full">
+                                <h3 class="text-lg font-medium">Personal Task List</h3>
+                                <p class="my-0 h-12 text-base">paragraph</p>
+                            </div>
+                            <div class="flex flex-row flex-nowrap box-border shrink grow-0 basis-auto">
+                                <button class="grow shrink-0 basis-auto h-10 w-10">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button class="grow shrink-0 basis-auto h-10 w-10">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                       <div class="flex flex-row flex-nowrap box-border place-content-start items-center grow shrink basis-full m-h-[1%]">
+                            <div class="grow shrink basis-full box-border max-w-full">
+                                <div class="Active px-2 py-1 w-fit status-chip rounded-full">Active</div>
+                            </div> 
+                            <span class="grow-0 shrink basis-auto box-border px-2 py-1 my-0">3</span>
+                       </div>
+                    </fuse-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
