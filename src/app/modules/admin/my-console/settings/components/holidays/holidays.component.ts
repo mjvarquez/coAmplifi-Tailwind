@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-holidays',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HolidaysComponent implements OnInit {
 
-  constructor() { }
+  holidaysForm!: FormGroup;
+   
+  constructor(private formBuilder: FormBuilder) {
+    this.holidaysForm = this.formBuilder.group({
+      selectYear: new FormControl(''),
+    });
+   }
 
   ngOnInit(): void {
+    // this.selectYearForm = new FormControl('', Validators.required);
   }
 
 }

@@ -1,6 +1,8 @@
+@import '../../../../../../../styles/variables.scss';
+
 .parent{
     @apply 
-    max-w-sm 
+    max-w-3xl 
     p-6 
     bg-white 
     border 
@@ -8,7 +10,8 @@
     rounded-lg 
     shadow-md 
     dark:bg-gray-800 
-    dark:border-gray-800 
+    dark:border-gray-100 ;
+    margin-top: 10px;
 }
 
 .checkbox{
@@ -28,17 +31,71 @@
 
 .checkbox-label{
     @apply
-    mr-2 text-sm 
+    mr-2 
+    text-sm 
     font-medium 
-    text-gray-400 
-    dark:text-gray-500
+    text-gray-500 
+    dark:text-gray-700;
 }
 
-//  ::ng-deep mat-checkbox-layout{
-//     justify-content: space-between;
-//  }
-
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+.checkbox-group{
+    width: 300px;
+    justify-content: space-between; 
+    display: flex; 
+    margin: 5px; 
+    // background-color: blue;
+}
+::ng-deep .mat-list-option.mat-accent .mat-checkbox-background {
   background-color: #F97316 !important;
+}
+
+
+.button-icon mat-icon {
+  font-size: 25px;
+  margin-right: 5px;
+  width: 30px !important;
+  height: 30px !important;
+  color: #F97316;
+}
+
+.delete-button .button-icon mat-icon {
+  font-size: 25px;
+  margin: 0px 5px 0px 0px;
+  width: 30px !important;
+  height: 30px !important;
+  color: rgba(255,0,0, 0.7);
+}
+
+
+.button-label {
+    font-weight: 600;
+    color: #f97316;
+    @apply  
+    dark:bg-gray-700 ;
+}
+
+// :host .mat-button:hover {
+//     background-color: rgba(249,115,22, 0.3);
+// }
+.delete-button .button-label {
+    font-weight: 600;
+    color: rgba(255,0,0, 0.7);
+    @apply  
+    dark:bg-gray-700 ;
+}
+
+
+.mat-button-base {
+  margin:  0px;
+}
+
+
+.selection-list{
+  // color: $white;
+  // background-color: $primary;
+}
+
+mat-list-option[aria-selected=true] {
+  background: rgba(241,245,249, 0.5)
 }
 

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Pipe, PipeTransform } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { MeetingsComponent } from './meetings.component';
 import { Route, RouterModule } from '@angular/router';
@@ -10,7 +10,13 @@ import { HolidaysComponent } from './components/holidays/holidays.component';
 import { PayPeriodComponent } from './components/pay-period/pay-period.component';
 import { DepartmentComponent } from './components/department/department.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatListModule } from '@angular/material/list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from "@angular/material/select";
 
 
 const SettingRoutes: Route[] = [
@@ -47,11 +53,20 @@ const SettingRoutes: Route[] = [
         WageAndHourComponent,
         HolidaysComponent,
         PayPeriodComponent,
-        DepartmentComponent
+        DepartmentComponent,
+        
     ],
     imports: [
+        MatSelectModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatListModule,
+        MatAutocompleteModule,
         MatCheckboxModule,
         CommonModule,
+        MatCardModule,
         MyConsoleModule,
         RouterModule.forChild(SettingRoutes),
         FuseCardModule
