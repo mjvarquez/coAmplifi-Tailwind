@@ -2,7 +2,7 @@ import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FuseScrollbarDirective } from '@fuse/directives/scrollbar/scrollbar.directive';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import * as fromApp from 'store/app.reducer';
+import * as fromApp from 'store/app.state';
 
 @ViewChildren(FuseScrollbarDirective)
 @Component({

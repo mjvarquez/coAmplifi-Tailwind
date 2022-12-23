@@ -19,7 +19,6 @@ export class AuthEffects {
       // this.authStoreService.handAuthentication(payload.payload);
       return this.authStoreService.authLogin(payload.payload).pipe(
           switchMap((user: any) => {
-            console.log(user);
             if (user && user.access_token) {
               this.authStoreService.doLoginUser(user);
             }

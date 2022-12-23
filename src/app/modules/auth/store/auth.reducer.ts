@@ -24,7 +24,6 @@ export const authReducer = createReducer(
   initialState,
   on(AuthActions.authLoginSucceededAction, (state: currentUserState, { payload }) =>
   {
-    console.log(payload);
     return {
       ...state,
       ...payload

@@ -1,5 +1,25 @@
-.status-chip.Active {
-    @apply 
-    bg-active 
-    text-active-text
+.status-chip.Active { 
+    @apply
+    bg-active-status
+    text-active-status
+}
+
+.status-chip.OnHold{
+    @apply
+    bg-onhold-status
+    text-onhold-status
+}
+
+.status-chip.Closed{
+    @apply
+    bg-closed-status
+    text-closed-status
+}
+
+.btn {
+    @apply
+    flex
+    items-center
+    justify-center
+    rounded-full
 }
