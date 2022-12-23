@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from "@angular/material/select";
+// import { BrowserModule } from '@angular/platform-browser';
 
 
 const SettingRoutes: Route[] = [
@@ -57,6 +58,7 @@ const SettingRoutes: Route[] = [
         
     ],
     imports: [
+        // BrowserModule,
         MatSelectModule,
         MatInputModule,
         FormsModule,

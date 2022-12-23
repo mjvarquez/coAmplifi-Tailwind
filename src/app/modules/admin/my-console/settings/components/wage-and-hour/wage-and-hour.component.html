@@ -21,34 +21,33 @@
                 {{ country.name }}
             </mat-list-option>
         </mat-selection-list> -->
-        <mat-selection-list #countrySelection style="width: 50%;">
-            
+        <mat-selection-list #countrySelection style="width: 50%;" (selectionChange)="onSelectedChange($event)">
             <mat-list-option class="" *ngFor="let country of countryList">
                 {{country.name}}
             </mat-list-option>
         </mat-selection-list><br>
 
-        <div style=" display: flex;">
+        <div style=" display: flex; align-items: center;">
             <button mat-button (click)="addCountry()">
                 <div class="add-button" style=" display: flex;">
                     <div class="text-center button-icon"><mat-icon >add_circle_outline</mat-icon></div>
                     <div class="button-label" style="margin-top: 8px;"> Add country</div> 
                 </div>
             </button>
-            <button mat-button>
+            <button mat-button disabled="{{!isShowClearSelection}}">
                 <div class="delete-button" style=" display: flex; "  >
                     <div class="text-center button-icon"><mat-icon>delete</mat-icon></div>
                     <div class="button-label" style="margin-top: 8px;"> Remove Selected Country</div> 
                 </div>
             </button>
-            <button mat-button>
+            <button *ngIf="isShowClearSelection" mat-button>
                 <div class="" style=" display: flex; ">
                     <div class="button-label text-center"> Clear Selection</div> 
                 </div>
             </button>
             <div *ngIf="isShowSelector" style="margin-top: 10px;">
                 <form class="example-form m-t-10">
-                    <mat-form-field class="example-full-width" appearance="outline" >
+                    <mat-form-field class="example-full-width" appearance="fill" style="width: 200px;">
                         <input type="text"
                             placeholder="Search and Add Country"
                             aria-label="Number"

@@ -41,8 +41,10 @@ export class WageAndHourComponent implements OnInit {
   }
 
   onSelectedChange(selectionEvent: any) {
-    console.log("see selected");
- }
+    console.log("see selected", selectionEvent);
+    this.isShowClearSelection = true;
+    this.isShowSelector = false;
+  }
 
 
 }

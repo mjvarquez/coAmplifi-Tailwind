@@ -103,6 +103,7 @@ const config = {
             textColor               : {
                 'active-text': '#54b441',
                 'text-orange': '#f58023',
+                'text-grey': '#717379',
             },
             flex                    : {
                 '0': '0 0 auto'

@@ -228,7 +228,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'dashboards.project',
                 title: 'Settings',
                 type : 'basic',
-                link : '/myConsole/settings'
+                link : 'systems/tenant-admin-tenantSetting'
             },
         ]
     },

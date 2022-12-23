@@ -1,1 +1,41 @@
-<p>pay-period works!</p>
+<mat-card appearance="raised" class="parent">
+    <mat-card-content>
+       <div>
+            <strong class="text-label">Change pay period setting</strong><br>
+            <p class="text-label mt-5">The change will take effect for future periods. Existing periods up to today will not be affected.</p><br>
+            <div>
+                <form [formGroup]="payPeriodForm">
+                    <mat-form-field appearance="outline" style="Width: 600px">
+                    <input matInput required formControlName="periodType">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="Width: 600px">
+                    <input matInput required formControlName="startDate">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="Width: 600px">
+                    <input matInput required formControlName="dateBeforeArchive">
+                    </mat-form-field>
+                    <br>
+                    <div class="ml-5" style="display: flex;">
+                        <button 
+                        disabled="{{!payPeriodForm.valid}}" 
+                        mat-button 
+                        class="mr-5"
+                        type="submit">
+                            <div class="delete-button" style=" display: flex; "  >
+                                <div class="button-label" >Save</div> 
+                            </div>
+                        </button>
+                        <button 
+                        mat-button 
+                        type="submit">
+                            <div class="delete-button" style=" display: flex; "  >
+                                <div class="button-label text-text-grey" >Cancel</div> 
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+       </div>
+    </mat-card-content>
+</mat-card>
+

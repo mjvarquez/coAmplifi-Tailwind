@@ -11,3 +11,57 @@
     dark:border-gray-100 ;
     margin-top: 10px;
 }
+
+.select-year{
+    margin-right: 15px;
+}
+
+.select-country{
+    margin-right: 15px;
+}
+
+.button-icon mat-icon {
+  font-size: 25px;
+  margin-right: 5px;
+  width: 30px !important;
+  height: 30px !important;
+  color: #F97316;
+}
+
+.button-label {
+    font-weight: 600;
+    color: #f97316;
+    @apply  
+    dark:bg-gray-700 ;
+}
+
+ ::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #F97316!important;
+ }
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #F97316 !important;
+} 
+
+// ::ng-deep.mat-form-field-ripple {
+//  /*change color of underline when focused*/
+//  background-color: #F97316 !important;
+// }
+
+// :host .mat-select-value-text {
+//   color: #F97316 !important;
+// }
+
+// .not-empty-select.mat-selected {
+//   color: green !important;
+// }
+
+::ng-deep .mat-focused .mat-select-arrow{
+    color: red;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+    color: red;
+}

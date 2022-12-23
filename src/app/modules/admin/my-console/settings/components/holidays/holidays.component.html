@@ -2,18 +2,133 @@
     <mat-card-content>
        <div>
             <div style="display:flex">
-                <!-- <form [formGroup]="holidaysForm"> -->
-                    <!-- <mat-form-field class="m-t-15" appearance="outline"> -->
-                        <!-- <mat-label>Select your car (required)</mat-label> -->
-                        <select required >
-                            <option label="2022"></option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-                    <!-- </mat-form-field> -->
-               <!-- </form> -->
+               <div class="select-year">
+                    <form [formGroup]="holidaysForm">
+                        <mat-form-field 
+                        class="m-t-15" 
+                        appearance="outline"
+                        style="width: 100px;">
+                            <!-- <mat-label>Select your car (required)</mat-label> -->
+                            <mat-label>Select A Year</mat-label>
+                            <mat-select formControlName="selectYear">
+                                <!-- <mat-option label="2022"></mat-option> -->
+                                <mat-option *ngFor="let year of yearList" [value]="year">
+                                    {{year}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="select-country">
+                    <form [formGroup]="holidaysForm">
+                        <mat-form-field 
+                        class="m-t-15" 
+                        appearance="outline"
+                        style="width: 200px;">
+                            <!-- <mat-label>Select your car (required)</mat-label> -->
+                            <mat-label>Select A Country</mat-label>
+                            <mat-select formControlName="selectCountry">
+                                <mat-option *ngFor="let country of countryList" [value]="country.name">
+                                    {{country.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <button mat-button style="margin-top: 15px;">
+                    <div class="delete-button" style=" display: flex; "  >
+                        <div class="text-center button-icon"><mat-icon>refresh</mat-icon></div>
+                        <div class="button-label text-text-orange" style="margin-top: 8px;" > Filter Now</div> 
+                    </div>
+                </button>
+            </div>
+            <div>
+                <div>
+                    <strong style="font-size: 17px; color: #454545;">Approved</strong><br>
+                    <mat-label *ngIf="approvedHolidays.length == 0" > 
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 
+                    </mat-label>
+                    <mat-selection-list
+                    *ngIf="approvedHolidays.length != 0"  
+                    #approvedSelection style="width: 50%;" 
+                    (selectionChange)="onSelectedApprovalChange($event)">
+                        <mat-list-option 
+                        class="" 
+                        *ngFor="let holiday of approvedHolidays">
+                            {{holiday}}
+                        </mat-list-option>
+                    </mat-selection-list><br>
+                </div>
+                <div>
+                    <strong style="font-size: 17px; color: #454545;">Pending Approval</strong><br>
+                    <mat-label *ngIf="pendingApprovalHolidays.length == 0"> 
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 
+                    </mat-label>
+                    <mat-selection-list
+                    *ngIf="pendingApprovalHolidays.length != 0"  
+                    #pedignApprovalSelection style="width: 50%;" 
+                    (selectionChange)="onSelectedPendingApprovalChange($event)">
+                        <mat-list-option 
+                        class="" 
+                        *ngFor="let holiday of pendingApprovalHolidays">
+                            {{holiday}}
+                        </mat-list-option>
+                    </mat-selection-list><br>
+                </div>
+                <div>
+                    <strong style="font-size: 17px; color: #454545;">Suggested for Addition</strong><br>
+                    <mat-label *ngIf="suggestedForAddition.length == 0" > 
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 
+                    </mat-label>
+                    <mat-selection-list
+                    *ngIf="suggestedForAddition.length != 0"  
+                    #suggestedAdditionSelection style="width: 50%;" 
+                    (selectionChange)="onSelectedSuggestedAdditionChange($event)">
+                        <mat-list-option 
+                        class="" 
+                        *ngFor="let addition of suggestedForAddition">
+                            {{addition}}
+                        </mat-list-option>
+                    </mat-selection-list><br>
+                </div>
+            </div><br>
+            <div>
+                <div>
+                    <strong style="font-size: 17px; color: #454545;">Add a new holiday</strong>
+                </div><br>
+                <button 
+                *ngIf="!isShowHolidayForm" 
+                mat-button style="margin-top: 15px;"
+                (click)="saveHoliday('add')">
+                    <div class="delete-button" style=" display: flex; "  >
+                        <div class="text-center button-icon"><mat-icon>add</mat-icon></div>
+                        <div class="button-label " style="margin-top: 8px;" >Add New Holiday</div> 
+                    </div>
+                </button>
+                <div *ngIf="isShowHolidayForm">
+                    <form [formGroup]="newHolidayForm" (ngSubmit)="saveHoliday('save')">
+                        <mat-form-field appearance="outline" style="Width: 600px">
+                            <input matInput required formControlName="date">
+                        </mat-form-field>
+                         <mat-form-field appearance="outline" style="Width: 600px">
+                            <input matInput required formControlName="name">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="Width: 600px">
+                            <input matInput required formControlName="description">
+                        </mat-form-field>
+                        <div [align]="'right'" [formGroup]="newHolidayForm">
+                            <button 
+                            disabled="{{!newHolidayForm.valid}}" 
+                            mat-button 
+                            type="submit">
+                                <div class="delete-button" style=" display: flex; "  >
+                                    <div class="text-center button-icon"><mat-icon>save</mat-icon></div>
+                                    <div class="button-label" style="margin-top: 8px;" >Save New Holiday</div> 
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
        </div>
     </mat-card-content>

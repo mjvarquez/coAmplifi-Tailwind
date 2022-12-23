@@ -1,0 +1,26 @@
+.parent{
+    @apply 
+    max-w-3xl 
+    p-6 
+    bg-white 
+    border 
+    border-gray-200 
+    rounded-lg 
+    shadow-md 
+    dark:bg-gray-800 
+    dark:border-gray-100 ;
+    margin-top: 10px;
+}
+
+.text-label{
+    font-size: 15px; 
+    color: #454545;
+}
+
+
+.button-label {
+    font-weight: 600;
+    color: #f97316;
+    @apply  
+    dark:bg-gray-700 ;
+}
