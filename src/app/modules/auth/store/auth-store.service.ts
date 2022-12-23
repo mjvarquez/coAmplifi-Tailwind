@@ -44,12 +44,11 @@ export class AuthStoreService {
   }
 
   doLoginUser(user){
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    localStorage.setItem('currentUserInfo', JSON.stringify(user.currentUserInfo));
+    // localStorage.setItem('currentUser', JSON.stringify(user));
+    // localStorage.setItem('currentUserInfo', JSON.stringify(user.currentUserInfo));
     // this.currentUserSubject.next(user);
     this.storeTokens(user);
     this.decodeAccessToken(user.access_token); // decode access token and store it as global constant
-    console.log(JSON.parse(user.currentUserInfo));
     if (this.hasApp_coAmplifi()) {
       console.log(true);
       this._router.navigate(['signed-in-redirect']);

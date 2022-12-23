@@ -7,6 +7,7 @@ import { SubNavigationService } from 'app/core/navigation/sub_navigation.service
 import { NotificationsService } from 'app/layout/common/notifications/notifications.service';
 import { QuickChatService } from 'app/layout/common/quick-chat/quick-chat.service';
 import { ShortcutsService } from 'app/layout/common/shortcuts/shortcuts.service';
+import { AuthResolverService } from './modules/auth/store/auth-resolver.service';
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +23,8 @@ export class InitialDataResolver implements Resolve<any>
         private _subNavigationService: SubNavigationService,
         private _notificationsService: NotificationsService,
         private _quickChatService: QuickChatService,
-        private _shortcutsService: ShortcutsService
+        private _shortcutsService: ShortcutsService,
+        private _authResolverService: AuthResolverService
     )
     {
     }
@@ -42,7 +44,7 @@ export class InitialDataResolver implements Resolve<any>
         // Fork join multiple API endpoint calls to wait all of them to finish
         return forkJoin([
             this._navigationService.get(),
-            this._subNavigationService.get(),
+            this._subNavigationService.get()
             // this._messagesService.getAll(),
             // this._notificationsService.getAll(),
             // this._quickChatService.getChats(),

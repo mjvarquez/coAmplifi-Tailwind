@@ -5,7 +5,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'app/core/auth/auth.service';
-import * as fromApp from 'store/app.reducer';
+import * as fromApp from 'store/app.state';
 import * as AuthActions from 'app/modules/auth/store/auth.actions';
 
 export interface FormModel {

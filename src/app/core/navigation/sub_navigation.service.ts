@@ -40,6 +40,7 @@ export class SubNavigationService
     {
         return this._httpClient.get<Navigation>('api/common/sub_navigation').pipe(
             tap((navigation) => {
+                console.log(navigation);
                 this._navigation.next(navigation);
             })
         );
