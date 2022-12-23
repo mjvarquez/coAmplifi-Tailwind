@@ -97,12 +97,17 @@ const config = {
             },
             colors                  : {
                 gray: colors.slate,
-                'active': '#eef8ec',
+                'active-status': '#eef8ec',
+                'onhold-status': '#fceded',
+                'closed-status': '#eef5fb',
                 'bg-orange': '#f58023'
             },
             textColor               : {
-                'active-text': '#54b441',
+                'active-status': '#54b441',
+                'onhold-status': '#de4f4f',
+                'closed-status': '#5098d3',
                 'text-orange': '#f58023',
+                'personal-icons': '#5098d3'
             },
             flex                    : {
                 '0': '0 0 auto'

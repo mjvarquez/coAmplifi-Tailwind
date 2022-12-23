@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PersonalDialogComponent } from './components/personal-dialog/personal-dialog.component';
 
 @Component({
@@ -11,7 +11,6 @@ export class PersonalComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    // private dialogRef: MatDialogRef<PersonalDialogComponent>,
   ) { }
 
   openDialog() {
@@ -21,6 +20,23 @@ export class PersonalComponent implements OnInit {
       maxWidth: '80vw',
     })
   }
+
+  // updateDialog() {
+  //   this.dialog.open(PersonalDialogComponent, {
+  //     height: 'auto',
+  //     width: 'auto',
+  //     maxWidth: '80vw',
+  //     // data: row,
+  //   })
+  // }
+
+  // deleteDialog() {
+  //   this.dialog.open(PersonalDialogComponent, {
+  //     height: 'auto',
+  //     width: 'auto',
+  //     maxWidth: '80vw',
+  //   })
+  // }
 
   // onNoClick(): void {
   //   this.dialogRef.close();

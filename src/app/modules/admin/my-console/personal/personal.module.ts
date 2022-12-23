@@ -8,8 +8,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SharedModule } from 'app/shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRippleModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalComponent } from './personal.component';
 import { PersonalDialogComponent } from './components/personal-dialog/personal-dialog.component';
@@ -55,6 +59,10 @@ const PersonalRoutes: Route[] = [
         FuseCardModule,
         MatFormFieldModule,
         MatInputModule,
+        MatRippleModule,
+        MatTooltipModule,
+        MatIconModule,
+        MatMenuModule,
         RouterModule.forChild(PersonalRoutes),
     ]
 })

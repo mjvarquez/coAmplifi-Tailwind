@@ -9,17 +9,29 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class PersonalDialogComponent implements OnInit {
   personalActivities: FormGroup;
+  headerTitle: string = 'Add Group of Personal Activities';
+
 
   constructor(
     private dialogRef: MatDialogRef<PersonalDialogComponent>,
     private formBuilder: FormBuilder
   ) { }
 
-  submitForm() {
+  getPersonalActivitiesForm() {
     this.personalActivities = this.formBuilder.group({
       groupName: ['', Validators.required],
       groupDescription: ['', Validators.required]
     });
+  }
+
+  submitForm() {
+    if (this.personalActivities.valid) {
+      const data: Object = {
+        groupName: this.personalActivities.value.groupName,
+        groupDescription: this.personalActivities.value.groupDescription
+      }
+      console.log(data)
+    }
   }
 
   closeDialog(): void {
@@ -27,7 +39,7 @@ export class PersonalDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.submitForm();
+    this.getPersonalActivitiesForm();
   }
 
 }
