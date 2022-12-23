@@ -4,16 +4,16 @@
         <mat-drawer-container class="flex-auto">
           <mat-drawer-content class="flex flex-col">
             <div class="flex-auto">
-                <div *ngIf="wageAndHour">
+                <div *ngIf="wageAndHour" [class]="'tab-transition-right'">
                     <app-wage-and-hour></app-wage-and-hour>
                 </div>
-                 <div *ngIf="holidays">
+                 <div *ngIf="holidays" [class]="'tab-transition-right'">
                     <app-holidays></app-holidays>
                 </div>
-                <div *ngIf="payPeriod">
+                <div *ngIf="payPeriod" [class]="'tab-transition-right'">
                     <app-pay-period></app-pay-period>
                 </div>
-                <div *ngIf="department">
+                <div *ngIf="department" [class]="'tab-transition-right'">
                     <app-department></app-department>
                 </div>
             </div>

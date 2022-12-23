@@ -1,19 +1,69 @@
-<!-- <fuse-card style="width: 100px; height:100px;">
-    <div >helllo</div>
-</fuse-card> -->
 
-
-<div class="parent"
-style="margin-top: 10px;">
-    <div style="font-size: 17px;"><strong>Supported Countries</strong></div><br>
-    <div *ngFor="let country of countries">
-        <div  style="width: 200px; justify-content: space-between; display: flex;" [align]="'row'">
-            <div  [align]="'left'">
-                <label class="checkbox-label">{{country}}</label>
+<mat-card appearance="raised" class="parent">
+    <mat-card-content>
+        <div style="font-size: 17px;"><strong>Supported Countries</strong></div><br>
+        <!-- <div *ngFor="let country of countryList" style="margin-left:30px ;">
+            <div  class="checkbox-group">
+                <div  [align]="'left'">
+                    <label 
+                    style="font-size: 15px; font-weight: 300;"
+                    class="checkbox-label">
+                        {{country.name}}
+                    </label>
+                </div>
+                <div [align]="'right'" style="margin-top: 1px;">
+                    <mat-checkbox class="" labelPosition="before" mat-checkbox-layout ></mat-checkbox>
+                </div>
             </div>
-            <div [align]="'right'">
-                <mat-checkbox class="checkbox" labelPosition="before" mat-checkbox-layout ></mat-checkbox>
+        </div><br> -->
+        <!-- <mat-selection-list [compareWith]="compareServiceTypes" [(ngModel)]="data" multiple>
+            <mat-list-option checkboxPosition="before" [value]="country" *ngFor="let country of countryList; trackBy: country.name;">
+                {{ country.name }}
+            </mat-list-option>
+        </mat-selection-list> -->
+        <mat-selection-list #countrySelection style="width: 50%;">
+            
+            <mat-list-option class="" *ngFor="let country of countryList">
+                {{country.name}}
+            </mat-list-option>
+        </mat-selection-list><br>
+
+        <div style=" display: flex;">
+            <button mat-button (click)="addCountry()">
+                <div class="add-button" style=" display: flex;">
+                    <div class="text-center button-icon"><mat-icon >add_circle_outline</mat-icon></div>
+                    <div class="button-label" style="margin-top: 8px;"> Add country</div> 
+                </div>
+            </button>
+            <button mat-button>
+                <div class="delete-button" style=" display: flex; "  >
+                    <div class="text-center button-icon"><mat-icon>delete</mat-icon></div>
+                    <div class="button-label" style="margin-top: 8px;"> Remove Selected Country</div> 
+                </div>
+            </button>
+            <button mat-button>
+                <div class="" style=" display: flex; ">
+                    <div class="button-label text-center"> Clear Selection</div> 
+                </div>
+            </button>
+            <div *ngIf="isShowSelector" style="margin-top: 10px;">
+                <form class="example-form m-t-10">
+                    <mat-form-field class="example-full-width" appearance="outline" >
+                        <input type="text"
+                            placeholder="Search and Add Country"
+                            aria-label="Number"
+                            matInput
+                            [formControl]="myControl"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" (selectionchange)="onSelectedChange($event)">
+                            <mat-option *ngFor="let option of countryOptions$ | async " [value]="option.name">
+                                {{option.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </form>
             </div>
         </div>
-    </div>
-</div>
+    </mat-card-content>
+</mat-card>
+
