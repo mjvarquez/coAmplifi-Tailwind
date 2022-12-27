@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PersonalDialogComponent } from './components/personal-dialog/personal-dialog.component';
 
@@ -8,27 +8,37 @@ import { PersonalDialogComponent } from './components/personal-dialog/personal-d
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
+  personalActivitiesDetails: Object[] = [];
 
   constructor(
     private dialog: MatDialog,
   ) { }
 
   openDialog() {
-    this.dialog.open(PersonalDialogComponent, {
+    let dialogRef = this.dialog.open(PersonalDialogComponent, {
       height: 'auto',
       width: 'auto',
       maxWidth: '80vw',
     })
+    dialogRef.afterClosed().subscribe(res => {
+      if (res.event === 'Add') {
+        this.personalActivitiesDetails.push(res.data)
+      } else if (res.event === 'Update') {
+        // this.personalActivitiesDetails.push(res.data)
+      }
+
+    })
   }
 
-  // updateDialog() {
-  //   this.dialog.open(PersonalDialogComponent, {
-  //     height: 'auto',
-  //     width: 'auto',
-  //     maxWidth: '80vw',
-  //     // data: row,
-  //   })
-  // }
+  updateDialog(row: any) {
+    let dialogRef = this.dialog.open(PersonalDialogComponent, {
+      height: 'auto',
+      width: 'auto',
+      maxWidth: '80vw',
+      data: row,
+    })
+
+  }
 
   // deleteDialog() {
   //   this.dialog.open(PersonalDialogComponent, {

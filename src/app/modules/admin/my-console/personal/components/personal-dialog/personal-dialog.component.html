@@ -1,7 +1,7 @@
 <h3 mat-dialog-title>{{ headerTitle }}</h3>
 <form [formGroup]="personalActivities" (ngSubmit)="submitForm()">
     <div mat-dialog-content>
-        <mat-form-field appearance="outline" class="w-full">
+        <mat-form-field appearance="outline" class="w-full" *ngIf="actionBtn === 'Add'">
             <mat-label>Group Name (can't be changed after created)</mat-label>
             <input matInput placeholder="" formControlName="groupName">
         </mat-form-field>
@@ -12,7 +12,7 @@
     </div>
     <div mat-dialog-actions [align]="'end'">
         <button mat-button type="button" (click)="closeDialog()">Cancel</button>
-        <button mat-button  type="submit" [disabled]="!personalActivities.valid">Add</button>
+        <button mat-button  type="submit" [disabled]="!personalActivities.valid">{{ actionBtn }}</button>
     </div>
 </form>
  

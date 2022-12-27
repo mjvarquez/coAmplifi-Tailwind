@@ -23,7 +23,54 @@
             </div>   
             <div class="flex flex-row flex-wrap box-border place-content-start  items-stretch max-h-full max-w-full -mb-4 -mr-4">
                 <!-- card container -->
-                <div class="block grow shrink basis-2/6 box-border max-w-[33.33%] pr-4 pb-4">
+                <div class="block grow shrink basis-2/6 box-border max-w-[33.33%] pr-4 pb-4" *ngFor="let personalActivityDetail of personalActivitiesDetails">
+                    <fuse-card class="flex flex-col flex-nowrap  box-border px-4 py-3">
+                        <div class=" flex flex-row flex-nowrap box-border">
+                            <div class="flex flex-col flex-nowrap box-border grow shrink basis-full max-w-full">
+                                <h3 class="text-lg font-medium">{{personalActivityDetail.groupName}}</h3>
+                                <p class="my-0 h-12">{{personalActivityDetail.groupDescription}}</p>
+                            </div>
+                            <div class="flex flex-row flex-nowrap box-border shrink grow-0 basis-auto">
+                                <button class="grow shrink-0 basis-auto h-10 w-10 btn" matTooltip="Personal Task Template" matRipple>
+                                    <mat-icon class="text-personal-icons">edit</mat-icon>
+                                </button>
+                                <button class="grow shrink-0 basis-auto h-10 w-10 btn" [matMenuTriggerFor]="menu" matRipple>
+                                    <mat-icon class="text-personal-icons">more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)="updateDialog(personalActivityDetail)">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>Update</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <mat-icon>pause_circle_outline</mat-icon>
+                                        <span>Hold</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <mat-icon>lock</mat-icon>
+                                        <span>Close</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <mat-icon>lock_open</mat-icon>
+                                        <span>Activate</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Delete</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                       <div class="flex flex-row flex-nowrap box-border place-content-start items-center grow shrink basis-full m-h-[1%]">
+                            <div class="grow shrink basis-full box-border max-w-full">
+                                <div class="Active px-2 py-1 w-fit status-chip rounded-full">Active</div>
+                            </div> 
+                            <span class="grow-0 shrink basis-auto box-border px-2 py-1 my-0">3</span>
+                       </div>
+                    </fuse-card>
+                </div>
+
+                <!-- <div class="block grow shrink basis-2/6 box-border max-w-[33.33%] pr-4 pb-4">
                     <fuse-card class="flex flex-col flex-nowrap  box-border px-4 py-3">
                         <div class=" flex flex-row flex-nowrap box-border">
                             <div class="flex flex-col flex-nowrap box-border grow shrink basis-full max-w-full">
@@ -162,7 +209,7 @@
                             <span class="grow-0 shrink basis-auto box-border px-2 py-1 my-0">3</span>
                        </div>
                     </fuse-card>
-                </div>
+                </div> -->
 
 
             </div>
